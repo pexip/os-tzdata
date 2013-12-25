@@ -1,3 +1,9 @@
+tzdata (2013g-0ubuntu0.12.04pexip1) pexip; urgency=low
+
+  * Prepare Pexip packaging
+
+ -- John-Mark Bell <jmb@pexip.com>  Wed, 25 Dec 2013 04:59:08 +0000
+
 tzdata (2013g-0ubuntu0.12.04) precise; urgency=low
 
   * New upstream release

@@ -3,11 +3,13 @@ Section: libs
 Priority: required
 Build-Depends: debhelper (>= 5.0.0)
 Build-Depends-Indep: po-debconf, openjdk-6-jre-headless, fdupes
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Maintainer: Pexip AS <packaging@pexip.com>
+XSBC-Pexip-Original-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
-Uploaders: Clint Adams <clint@debian.org>, Aurelien Jarno <aurel32@debian.org>
+XSBC-Pexip-Original-Uploaders: Clint Adams <clint@debian.org>, Aurelien Jarno <aurel32@debian.org>
 Standards-Version: 3.9.3
 Homepage: http://www.iana.org/time-zones
+XS-Pexip-Upstream: http://archive.ubuntu.com/ubuntu/ precise
 
 Package: tzdata
 Architecture: all
