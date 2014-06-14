@@ -1,3 +1,24 @@
+tzdata (2014e-0ubuntu0.12.04) precise; urgency=high
+
+  * New upstream release, with urgent timezone updates for
+    Egypt on June 26 and Morocco on June 28 (LP: #1326902)
+
+ -- Adam Conrad <adconrad@ubuntu.com>  Fri, 13 Jun 2014 18:05:19 -0600
+
+tzdata (2014c-0ubuntu0.12.04) precise; urgency=critical
+
+  * New upstream release, critical urgency due to Egypt zone
+    changes happening on May 15th, in two days (LP: #1319122)
+
+ -- Adam Conrad <adconrad@ubuntu.com>  Tue, 13 May 2014 11:21:44 -0600
+
+tzdata (2014a-0ubuntu0.12.04) precise; urgency=medium
+
+  * New upstream release, with updated Turkish DST (LP: #1290193)
+  * Remove solar87, solar88, solar89, following upstream removal.
+
+ -- Adam Conrad <adconrad@ubuntu.com>  Thu, 13 Mar 2014 17:44:33 -0600
+
 tzdata (2013g-0ubuntu0.12.04) precise; urgency=low
 
   * New upstream release
