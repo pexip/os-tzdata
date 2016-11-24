@@ -12,7 +12,7 @@ TZGEN_JAVA := $(CURDIR)/tzgen-java
 VERSION := $(shell dpkg-parsechangelog | sed -e '/^Version/!d;s/^Version: //g;s/.*://g;s/-.*//g')
 EMDEBIAN := $(shell dpkg-parsechangelog | egrep '^Version: .*em[0-9]+')
 
-JHOME := $(wildcard /usr/lib/jvm/java-6-openjdk-$(DEB_HOST_ARCH)/ /usr/lib/jvm/java-6-openjdk/)
+JHOME := /usr/lib/jvm/default-java/
 
 TIMEZONES := africa \
              antarctica \
@@ -69,18 +69,8 @@ endif
 	/usr/sbin/zic -d $(TZGEN) -p America/New_York
 
 	# Replace hardlinks by symlinks
-	cd $(TZGEN) ; \
-	fdupes -1 -H -q -R . | while read line ; do \
-	  set -- $${line} ; \
-	  tgt="$${1##./}" ; \
-	  shift ; \
-	  while [ "$$#" != 0 ] ; do \
-	    link="$${1##./}" ; \
-	    reltgt="$$(echo $$link | sed -e 's,[^/]\+$$,,g' -e 's,[^/]\+,..,g')$${tgt}" ; \
-	    ln -sf $${reltgt} $${link} ; \
-	    shift ; \
-	  done ; \
-	done
+	rdfind -outputname /dev/null -makesymlinks true -removeidentinode false $(TZGEN)
+	symlinks -r -s -c $(TZGEN)
 
 	# Generate a java version
 	$(JHOME)/bin/java -jar $(JHOME)/jre/lib/javazic.jar -V $(VERSION) -d $(TZGEN_JAVA) $(TIMEZONES) $(TIMEZONES_JAVA)
@@ -132,7 +122,7 @@ clean:
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 	# Do nothing
 
 # Build architecture-dependent files here.
@@ -151,6 +141,8 @@ binary-indep: build install
 	dh_installdocs
 	dh_compress
 	dh_fixperms
+	# Upstream ships this 755 for some bizarre reason:
+	chmod 644 debian/tzdata/usr/share/zoneinfo/leap-seconds.list
 	dh_installdeb
 	dh_gencontrol
 	dh_md5sums

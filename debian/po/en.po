@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tzdata\n"
 "Report-Msgid-Bugs-To: tzdata@packages.debian.org\n"
-"POT-Creation-Date: 2011-10-31 23:24+0100\n"
-"PO-Revision-Date: 2010-05-09 04:17+0000\n"
-"Last-Translator: Clint Adams <schizo@debian.org>\n"
+"POT-Creation-Date: 2016-11-24 20:51+0100\n"
+"PO-Revision-Date: 2013-12-24 23:13+0100\n"
+"Last-Translator: Clint Adams <clint@debian.org>\n"
 "Language-Team: English\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -149,7 +149,7 @@ msgstr "System V timezones"
 #. EST5, MST7, etc.
 #: ../tzdata.templates:1001
 msgid "US"
-msgstr ""
+msgstr "US"
 
 #. Type: select
 #. Choices
@@ -171,19 +171,14 @@ msgstr "Geographic area:"
 #. Type: select
 #. Description
 #: ../tzdata.templates:1002
-#, fuzzy
-#| msgid ""
-#| "Please select the geographic area you live in. Subsequent configuration "
-#| "questions will narrow this down by presenting a list of cities, "
-#| "representing the time zones in which they are located."
 msgid ""
 "Please select the geographic area in which you live. Subsequent "
 "configuration questions will narrow this down by presenting a list of "
 "cities, representing the time zones in which they are located."
 msgstr ""
-"Please select the geographic area you live in. Subsequent configuration "
-"questions will narrow this down by presenting a list of cities, representing "
-"the time zones in which they are located."
+"Please select the geographic area in which you live. Subsequent "
+"configuration questions will narrow this down by presenting a list of "
+"cities, representing the time zones in which they are located."
 
 #. Type: select
 #. Choices
@@ -365,7 +360,7 @@ msgstr "Johannesburg"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:2001
 msgid "Juba"
-msgstr ""
+msgstr "Juba"
 
 #. Type: select
 #. Choices
@@ -621,10 +616,8 @@ msgstr "Time zone:"
 #: ../tzdata.templates:8002 ../tzdata.templates:9002 ../tzdata.templates:10002
 #: ../tzdata.templates:11002 ../tzdata.templates:12001
 #: ../tzdata.templates:13002 ../tzdata.templates:14001
-#, fuzzy
-#| msgid "Please select the time zone corresponding to your location."
 msgid "Please select the city or region corresponding to your time zone."
-msgstr "Please select the time zone corresponding to your location."
+msgstr "Please select the city or region corresponding to your time zone."
 
 #. Type: select
 #. Choices
@@ -910,6 +903,13 @@ msgstr "Costa Rica"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:3001
+msgid "Creston"
+msgstr "Creston"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:3001
 msgid "Cuiaba"
 msgstr "Cuiaba"
 
@@ -989,6 +989,13 @@ msgstr "El Salvador"
 #: ../tzdata.templates:3001
 msgid "Ensenada"
 msgstr "Ensenada"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:3001
+msgid "Fort_Nelson"
+msgstr ""
 
 #. Type: select
 #. Choices
@@ -1184,7 +1191,7 @@ msgstr "Monticello (Kentucky)"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:3001
 msgid "Kralendijk"
-msgstr ""
+msgstr "Kralendijk"
 
 #. Type: select
 #. Choices
@@ -1212,7 +1219,7 @@ msgstr "Los Angeles"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:3001
 msgid "Lower_Princes"
-msgstr ""
+msgstr "Lower Princes"
 
 #. Type: select
 #. Choices
@@ -1254,7 +1261,7 @@ msgstr "Martinique"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:3001
 msgid "Matamoros"
-msgstr ""
+msgstr "Matamoros"
 
 #. Type: select
 #. Choices
@@ -1281,10 +1288,8 @@ msgstr "Merida"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:3001
-#, fuzzy
-#| msgid "Mazatlan"
 msgid "Metlakatla"
-msgstr "Mazatlan"
+msgstr "Metlakatla"
 
 #. Type: select
 #. Choices
@@ -1374,10 +1379,8 @@ msgstr "Fernando de Noronha"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:3001
-#, fuzzy
-#| msgid "North_Dakota/Center"
 msgid "North_Dakota/Beulah"
-msgstr "Center (North Dakota)"
+msgstr "Beulah (North Dakota)"
 
 #. Type: select
 #. Choices
@@ -1398,7 +1401,7 @@ msgstr "New Salem (North Dakota)"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:3001
 msgid "Ojinaga"
-msgstr ""
+msgstr "Ojinaga"
 
 #. Type: select
 #. Choices
@@ -1509,10 +1512,8 @@ msgstr "Rio Branco"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:3001
-#, fuzzy
-#| msgid "Santarem"
 msgid "Santa_Isabel"
-msgstr "Santarém"
+msgstr "Santa Isabel"
 
 #. Type: select
 #. Choices
@@ -1561,7 +1562,7 @@ msgstr "Shiprock"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:3001
 msgid "Sitka"
-msgstr ""
+msgstr "Sitka"
 
 #. Type: select
 #. Choices
@@ -1722,7 +1723,7 @@ msgstr "Dumont d'Urville"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:4001
 msgid "Macquarie"
-msgstr ""
+msgstr "Macquarie"
 
 #. Type: select
 #. Choices
@@ -1758,6 +1759,13 @@ msgstr "Rothera"
 #: ../tzdata.templates:4001
 msgid "Syowa"
 msgstr "Syowa"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:4001
+msgid "Troll"
+msgstr ""
 
 #. Type: select
 #. Choices
@@ -1924,6 +1932,13 @@ msgstr "Ashgabat"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:7001
+msgid "Atyrau"
+msgstr ""
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:7001
 msgid "Baghdad"
 msgstr "Baghdad"
 
@@ -1952,6 +1967,13 @@ msgstr "Bangkok"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:7001
+msgid "Barnaul"
+msgstr ""
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:7001
 msgid "Beirut"
 msgstr "Beirut"
 
@@ -1968,6 +1990,13 @@ msgstr "Bishkek"
 #: ../tzdata.templates:7001
 msgid "Brunei"
 msgstr "Brunei"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:7001
+msgid "Chita"
+msgstr ""
 
 #. Type: select
 #. Choices
@@ -2029,6 +2058,13 @@ msgstr "Dushanbe"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:7001
+msgid "Famagusta"
+msgstr ""
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:7001
 msgid "Gaza"
 msgstr "Gaza"
 
@@ -2044,7 +2080,7 @@ msgstr "Harbin"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:7001
 msgid "Hebron"
-msgstr ""
+msgstr "Hebron"
 
 #. Type: select
 #. Choices
@@ -2144,6 +2180,13 @@ msgstr "Katmandu"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:7001
+msgid "Khandyga"
+msgstr "Khandyga"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:7001
 msgid "Kolkata"
 msgstr "Kolkata"
 
@@ -2225,7 +2268,7 @@ msgstr "Nicosia"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:7001
 msgid "Novokuznetsk"
-msgstr ""
+msgstr "Novokuznetsk"
 
 #. Type: select
 #. Choices
@@ -2301,27 +2344,6 @@ msgstr "Riyadh"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:7001
-msgid "Riyadh87"
-msgstr "Riyadh87"
-
-#. Type: select
-#. Choices
-#. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:7001
-msgid "Riyadh88"
-msgstr "Riyadh88"
-
-#. Type: select
-#. Choices
-#. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:7001
-msgid "Riyadh89"
-msgstr "Riyadh89"
-
-#. Type: select
-#. Choices
-#. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:7001
 msgid "Sakhalin"
 msgstr "Sakhalin"
 
@@ -2352,6 +2374,13 @@ msgstr "Shanghai"
 #: ../tzdata.templates:7001
 msgid "Singapore"
 msgstr "Singapore"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:7001
+msgid "Srednekolymsk"
+msgstr ""
 
 #. Type: select
 #. Choices
@@ -2406,6 +2435,13 @@ msgstr "Tokyo"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:7001
+msgid "Tomsk"
+msgstr ""
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:7001
 msgid "Ujung_Pandang"
 msgstr "Ujung Pandang"
 
@@ -2427,6 +2463,13 @@ msgstr "Urumqi"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:7001
+msgid "Ust-Nera"
+msgstr "Ust-Nera"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:7001
 msgid "Vientiane"
 msgstr "Vientiane"
 
@@ -2443,6 +2486,15 @@ msgstr "Vladivostok"
 #: ../tzdata.templates:7001
 msgid "Yakutsk"
 msgstr "Yakutsk"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:7001
+#, fuzzy
+#| msgid "Rangoon"
+msgid "Yangon"
+msgstr "Rangoon"
 
 #. Type: select
 #. Choices
@@ -2553,6 +2605,15 @@ msgstr "Andorra"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:9001
+#, fuzzy
+#| msgid "Australia"
+msgid "Astrakhan"
+msgstr "Australia"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:9001
 msgid "Athens"
 msgstr "Athens"
 
@@ -2604,6 +2665,13 @@ msgstr "Bucharest"
 #: ../tzdata.templates:9001
 msgid "Budapest"
 msgstr "Budapest"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:9001
+msgid "Busingen"
+msgstr "Büsingen"
 
 #. Type: select
 #. Choices
@@ -2674,6 +2742,13 @@ msgstr "Kaliningrad"
 #: ../tzdata.templates:9001
 msgid "Kiev"
 msgstr "Kiev"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:9001
+msgid "Kirov"
+msgstr ""
 
 #. Type: select
 #. Choices
@@ -2812,6 +2887,15 @@ msgstr "Sarajevo"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:9001
+#, fuzzy
+#| msgid "Sarajevo"
+msgid "Saratov"
+msgstr "Sarajevo"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:9001
 msgid "Simferopol"
 msgstr "Simferopol"
 
@@ -2856,6 +2940,13 @@ msgstr "Tirane"
 #: ../tzdata.templates:9001
 msgid "Tiraspol"
 msgstr "Tiraspol"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:9001
+msgid "Ulyanovsk"
+msgstr ""
 
 #. Type: select
 #. Choices
@@ -3022,6 +3113,13 @@ msgstr "Auckland"
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:11001
+msgid "Bougainville"
+msgstr ""
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:11001
 msgid "Chatham"
 msgstr "Chatham"
 
@@ -3030,7 +3128,7 @@ msgstr "Chatham"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:11001
 msgid "Chuuk"
-msgstr ""
+msgstr "Chuuk"
 
 #. Type: select
 #. Choices
@@ -3212,7 +3310,7 @@ msgstr "Pitcairn"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:11001
 msgid "Pohnpei"
-msgstr ""
+msgstr "Pohnpei"
 
 #. Type: select
 #. Choices
@@ -3306,73 +3404,67 @@ msgstr "Yap"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:13001
 msgid "Alaska"
-msgstr ""
+msgstr "Alaska"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:13001
 msgid "Aleutian"
-msgstr ""
+msgstr "Aleutian"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:13001
 msgid "Arizona"
-msgstr ""
+msgstr "Arizona"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:13001
 msgid "Central"
-msgstr ""
+msgstr "Central"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:13001
-#, fuzzy
-#| msgid "Easter"
 msgid "Eastern"
-msgstr "Easter"
+msgstr "Eastern"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:13001
 msgid "Hawaii"
-msgstr ""
+msgstr "Hawaii"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:13001
-#, fuzzy
-#| msgid "Indiana/Marengo"
 msgid "Indiana-Starke"
-msgstr "Marengo (Indiana)"
+msgstr "Starke County (Indiana)"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:13001
 msgid "Michigan"
-msgstr ""
+msgstr "Michigan"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:13001
 msgid "Mountain"
-msgstr ""
+msgstr "Mountain"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:13001
-#, fuzzy
-#| msgid "Pacific"
 msgid "Pacific-New"
-msgstr "Pacific Ocean"
+msgstr "Pacific-New"
