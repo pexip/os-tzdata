@@ -9,7 +9,7 @@ XSBC-Original-Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
 XSBC-Pexip-Original-Uploaders: Clint Adams <clint@debian.org>, Aurelien Jarno <aurel32@debian.org>
 Standards-Version: 3.9.3
 Homepage: http://www.iana.org/time-zones
-XS-Pexip-Upstream: http://archive.ubuntu.com/ubuntu/ precise
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
 
 Package: tzdata
 Architecture: all
