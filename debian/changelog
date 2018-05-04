@@ -1,26 +1,28 @@
-tzdata (2018e-0+deb8u1) jessie; urgency=medium
+tzdata (2018e-0+deb9u1) stretch; urgency=medium
 
   [ Aurelien Jarno ]
   * New upstream version, affecting the following future timestamp:
     - North Korea switches back to +09 on 2018-05-05.
 
- -- Aurelien Jarno <aurel32@debian.org>  Fri, 04 May 2018 20:34:02 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Fri, 04 May 2018 20:22:35 +0200
 
-tzdata (2018d-0+deb8u1) jessie; urgency=medium
+tzdata (2018d-0+deb9u1) stretch; urgency=medium
 
   * New upstream version.
 
- -- Clint Adams <clint@debian.org>  Mon, 26 Mar 2018 18:49:18 -0400
+ -- Clint Adams <clint@debian.org>  Mon, 26 Mar 2018 18:43:38 -0400
 
-tzdata (2018c-0+deb8u1) jessie; urgency=medium
+tzdata (2018c-0+deb9u1) stretch; urgency=medium
 
   * New upstream version, affecting the following past and future timestamps:
     - São Tomé and Príncipe switched from +00 to +01 on 2018-01-01 at 01:00.
     - Southern Brazil will begin DST on 2018-11-04 instead of 2018-10-21.
+  * debian/control: Update Vcs-Git and Vcs-Browser fields following the move
+    to Salsa.
 
- -- Aurelien Jarno <aurel32@debian.org>  Sat, 10 Feb 2018 12:58:33 +0100
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 10 Feb 2018 12:43:04 +0100
 
-tzdata (2017c-0+deb8u1) jessie; urgency=medium
+tzdata (2017c-0+deb9u1) stretch; urgency=medium
 
   * New upstream version, affecting the following future timestamp:
     - Northern Cyprus resumed EU rules starting 2017-10-29.
@@ -31,110 +33,162 @@ tzdata (2017c-0+deb8u1) jessie; urgency=medium
     - Turks & Caicos will switch from -04 all year to -05 with US DST,
       affecting UT offset starting 2018-11-04.
 
- -- Aurelien Jarno <aurel32@debian.org>  Wed, 25 Oct 2017 01:27:56 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Wed, 25 Oct 2017 01:22:36 +0200
 
-tzdata (2017b-0+deb8u1) stable; urgency=medium
+tzdata (2017b-1) unstable; urgency=medium
 
+  [ Aurelien Jarno ]
   * New upstream version, affecting the following future timestamp:
     - Haiti resumed observance of DST in 2017.
 
- -- Aurelien Jarno <aurel32@debian.org>  Thu, 06 Apr 2017 11:53:44 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Thu, 06 Apr 2017 11:31:27 +0200
 
-tzdata (2017a-0+deb8u1) stable; urgency=medium
+tzdata (2017a-1) unstable; urgency=medium
 
+  [ Aurelien Jarno ]
   * New upstream version, affecting the following future timestamp:
     - Mongolia no longer observes DST.
     - Magallanes region diverges from Santiago starting 2017-05-13,
       the America/Punta_Arenas zone has been added.
+  * Update Dutch debconf translation, by Frans Spiesschaert.  Closes:
+    #849234.
+  * Update Japanese debconf translation, by victory <victory.deb@gmail.com>.
+  * Update French debconf translation, by Baptiste Jammet.  Closes: #851589.
+  * Remove /etc/localtime on purge.  Closes: #854141.
+  * Update Danish debconf translation, by Joe Hansen.  Closes: #856785.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sun, 12 Mar 2017 21:39:11 +0100
+
+tzdata (2016j-2) unstable; urgency=medium
+
+  [ Aurelien Jarno ]
   * Allow partially translated choices in debconf templates.
-  * Update translations from the sid package.
+  * Update Dutch debconf translation, by Frans Spiesschaert.  Closes:
+    #845691.
 
- -- Aurelien Jarno <aurel32@debian.org>  Sun, 12 Mar 2017 22:27:35 +0100
+ -- Aurelien Jarno <aurel32@debian.org>  Fri, 25 Nov 2016 23:03:59 +0100
 
-tzdata (2016j-0+deb8u1) stable; urgency=medium
+tzdata (2016j-1) unstable; urgency=medium
 
+  [ Aurelien Jarno ]
   * New upstream version, affecting the following future timestamp:
     - Saratov, Russia switches from +03 to +04 on 2016-12-04 at 02:00.
-  * Update translations from the sid package.
+  * Update templates and translations.
 
- -- Aurelien Jarno <aurel32@debian.org>  Thu, 24 Nov 2016 23:23:42 +0100
+ -- Aurelien Jarno <aurel32@debian.org>  Thu, 24 Nov 2016 20:54:54 +0100
 
-tzdata (2016i-0+deb8u1) stable; urgency=medium
+tzdata (2016i-1) unstable; urgency=high
 
+  [ Aurelien Jarno ]
   * New upstream version, affecting the following past and future timestamps:
     - Pacific/Tongatapu (DST starting on 2016-11-06 at 02:00).
     - Northern Cyprus is now +03 year round, the Asia/Famagusta zone has
       been added.
     - Antarctica/Casey (switched from +08 to +11 on 2016-10-22).
-  * Update translations from the sid package.
+  * Update templates and translations.
 
- -- Aurelien Jarno <aurel32@debian.org>  Sun, 06 Nov 2016 01:18:16 +0100
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 05 Nov 2016 23:55:01 +0100
 
-tzdata (2016h-0+deb8u1) stable; urgency=medium
+tzdata (2016h-1) unstable; urgency=high
 
+  [ Aurelien Jarno ]
   * New upstream version, affecting the following future timestamp:
     - Asia/Gaza and Asia/Hebron (DST ending on 2016-10-29 at 01:00, not
       2016-10-21 at 00:00).
+  * Convert Asia/Rangoon into Asia/Yangon, as the former is now deprecaed.
 
- -- Aurelien Jarno <aurel32@debian.org>  Fri, 21 Oct 2016 01:19:52 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Thu, 20 Oct 2016 23:29:12 +0200
 
-tzdata (2016g-0+deb8u1) stable; urgency=medium
+tzdata (2016g-1) unstable; urgency=medium
 
-  * New upstream version, affecting the following future time stamps:
-    - Europe/Istanbul switch from EET/EEST (+02/+03) to permanent +03 on
-      2016-09-07. While the timezone has changed, the divergence from
-      EET/EEST will happen on 2016-10-30.  Closes: #838781.
-    - New leap second 2016-12-31 23:59:60 UTC as per IERS Bulletin C 52.
+  [ Aurelien Jarno ]
+  * Update Danish debconf translation, by Joe Hansen.  Closes: #830591.
+  * Update German debconf translation, by Holger Wansing.  Closes: #835538.
 
- -- Aurelien Jarno <aurel32@debian.org>  Tue, 27 Sep 2016 23:50:25 +0200
+  [ Clint Adams ]
+  * New upstream version.
 
-tzdata (2016f-0+deb8u1) stable; urgency=medium
+ -- Clint Adams <clint@debian.org>  Thu, 22 Sep 2016 16:08:33 -0400
 
-  * New upstream version, affecting the following future time stamps:
-    - Africa/Cairo (DST starting on 2016-07-07 cancelled).
-    - Asia/Novosibirsk (on 2016-07-24)
-
- -- Aurelien Jarno <aurel32@debian.org>  Tue, 05 Jul 2016 20:12:43 +0200
-
-tzdata (2016e-0+deb8u1) stable; urgency=medium
+tzdata (2016f-1) unstable; urgency=medium
 
   * New upstream version, affecting the following future time stamp:
-    - Africa/Cairo
-  * Update translations from the sid package.
+    - Africa/Cairo (DST starting on 2016-07-07 cancelled).
+    - Asia/Novosibirsk (on 2016-07-24).
+  * debian/control: Update Standards-Version to 3.9.8, no changes.
+  * debian/rules: install NEWS as upstream changelog.
 
- -- Aurelien Jarno <aurel32@debian.org>  Sun, 26 Jun 2016 15:12:06 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 05 Jul 2016 19:35:18 +0200
 
-tzdata (2016d-0+deb8u1) stable; urgency=medium
+tzdata (2016e-1) unstable; urgency=medium
+
+  * New upstream version, affecting the following future time stamp:
+    Africa/Cairo
+  * Update Dutch debconf translation, by Frans Spiesschaert.  Closes:
+    #823442.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sun, 26 Jun 2016 14:34:16 +0200
+
+tzdata (2016d-2) unstable; urgency=medium
+
+  * Update Japanese debconf translation, by Takuma Yamada.  Closes:
+    #819599.
+  * Update French debconf translation, by Christian Perrier.  Closes:
+    #819949.
+  * Update Dutch debconf translation, by Frans Spiesschaert.  Closes:
+    #821439.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Thu, 21 Apr 2016 13:04:30 +0200
+
+tzdata (2016d-1) unstable; urgency=medium
 
   * New upstream version, affecting the following future time stamps:
     - America/Caracas.  Closes: #821147.
     - Asia/Magadan
     - Asia/Tomsk (new timezone).
-  * Update translations from the sid package.
+  * Update templates and translations.
 
- -- Aurelien Jarno <aurel32@debian.org>  Fri, 22 Apr 2016 15:32:01 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Wed, 20 Apr 2016 20:37:29 +0200
 
-tzdata (2016c-0+deb8u1) stable; urgency=medium
+tzdata (2016c-1) unstable; urgency=medium
 
   * New upstream version, affecting the following future time stamps:
     - America/Santiago
     - Asia/Baku
 
- -- Aurelien Jarno <aurel32@debian.org>  Fri, 25 Mar 2016 23:58:54 +0100
+ -- Aurelien Jarno <aurel32@debian.org>  Fri, 25 Mar 2016 23:19:01 +0100
 
-tzdata (2016b-0+deb8u1) stable; urgency=medium
+tzdata (2016b-1) unstable; urgency=medium
 
   * New upstream version, affecting the following future time stamps:
-    - America/Cayman
     - America/Port-au-Prince
-    - Asia/Chita
     - Asia/Gaza
     - Asia/Hebron
-    - Asia/Tehran
+  * debian/rules: remove emdebian ifdefs.
+  * debian/compat, debian/control, debian/rules: rewrite using dh and
+    debhelper compatibility 9.
+  * Update French debconf translation, by Christian Perrier.  Closes:
+    #814831.
+  * Update Japanese debconf translation, by Takuma Yamada.  Closes:
+    #815386.
+  * Drop the tzdata-java package.  Closes: #814073.
+  * debian/control: Update Standards-Version to 3.9.7, no changes.
 
- -- Aurelien Jarno <aurel32@debian.org>  Mon, 14 Mar 2016 21:53:38 +0100
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 14 Mar 2016 21:45:24 +0100
 
-tzdata (2015g-0+deb8u1) stable; urgency=medium
+tzdata (2016a-1) unstable; urgency=medium
+
+  [ Aurelien Jarno ]
+  * Add Vcs-Git and Vcs-Browser fields to debian/control.
+  * New upstream version, affecting the following future time stamps:
+    - America/Cayman
+    - Asia/Chita
+    - Asia Tehran
+  * Change /etc/localtime into a symlink (closes: #803144)
+
+ -- Aurelien Jarno <aurel32@debian.org>  Fri, 29 Jan 2016 17:26:32 +0100
+
+tzdata (2015g-1) unstable; urgency=medium
 
   [ Aurelien Jarno ]
   * New upstream version, affecting the following future time stamps:
@@ -143,31 +197,37 @@ tzdata (2015g-0+deb8u1) stable; urgency=medium
     - Norfolk Island
     - Turkey (closes: #801172)
 
- -- Aurelien Jarno <aurel32@debian.org>  Wed, 07 Oct 2015 16:06:53 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Wed, 07 Oct 2015 15:51:25 +0200
 
-tzdata (2015f-0+deb8u1) stable; urgency=medium
+tzdata (2015f-1) unstable; urgency=high
 
+  [ Aurelien Jarno ]
   * New upstream version, affecting the following future time stamps:
     - North Korea switches to +0830 on 2015-08-15.
     - Uruguay no longer observes DST.
 
- -- Aurelien Jarno <aurel32@debian.org>  Tue, 11 Aug 2015 20:29:38 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 11 Aug 2015 19:56:35 +0200
 
-tzdata (2015e-0+deb8u1) stable; urgency=medium
+tzdata (2015e-1) unstable; urgency=medium
 
+  [ Aurelien Jarno ]
   * New upstream version:
     - DST suspension from 2015-06-14 03:00 through 2015-07-19 02:00 in
       Morroco.
+  * Change the Provides: to tzdata-stretch from tzdata-jessie.
 
- -- Aurelien Jarno <aurel32@debian.org>  Tue, 16 Jun 2015 20:46:53 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 16 Jun 2015 20:38:21 +0200
 
-tzdata (2015d-0+deb8u1) stable; urgency=medium
+tzdata (2015d-1) unstable; urgency=medium
 
-  * New upstream version:
-    - Remove DST rule for Egypt starting in 2015.
+  [ Adam Conrad ]
+  * New upstream release with yet another urgent DST change for Egypt.
   * Install leap-seconds.list to /usr/share/zoneinfo (Closes: #775166)
 
- -- Aurelien Jarno <aurel32@debian.org>  Mon, 27 Apr 2015 23:20:28 +0200
+  [ Aurelien Jarno ]
+  * Install zone1970.tab.  Closes: #782646.
+
+ -- Adam Conrad <adconrad@0c3.net>  Sun, 26 Apr 2015 23:17:21 +0100
 
 tzdata (2015c-1) unstable; urgency=high
 
