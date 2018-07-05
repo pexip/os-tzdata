@@ -8,7 +8,7 @@ XSBC-Pexip-Original-Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.
 Uploaders: Clint Adams <clint@debian.org>, Aurelien Jarno <aurel32@debian.org>, Adam Conrad <adconrad@0c3.net>
 Standards-Version: 3.9.6
 Homepage: http://www.iana.org/time-zones
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ stretch
 
 Package: tzdata
 Architecture: all
