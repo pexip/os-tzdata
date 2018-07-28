@@ -1,18 +1,9 @@
 #!/usr/bin/make -f
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
 export LC_ALL=C
 
-DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
-
 TZGEN := $(CURDIR)/tzgen
-TZGEN_JAVA := $(CURDIR)/tzgen-java
-
 VERSION := $(shell dpkg-parsechangelog | sed -e '/^Version/!d;s/^Version: //g;s/.*://g;s/-.*//g')
-EMDEBIAN := $(shell dpkg-parsechangelog | egrep '^Version: .*em[0-9]+')
-
-JHOME := /usr/lib/jvm/default-java/
 
 TIMEZONES := africa \
              antarctica \
@@ -26,9 +17,6 @@ TIMEZONES := africa \
              backward \
              systemv \
 	     pacificnew
-
-TIMEZONES_JAVA := gmt \
-                  jdk11_backward
 
 TEMPLATES_FILE := $(CURDIR)/debian/tzdata.templates
 TEMPLATES_AREAS := Africa \
@@ -45,25 +33,16 @@ TEMPLATES_AREAS := Africa \
 		   US \
 		   Etc
 
-build: build-arch build-indep
-build-arch:
+%:
+	dh $@
 
-build-indep: build-indep-stamp
-build-indep-stamp:
-	dh_testdir
-
+override_dh_auto_build-indep:
 	# Build the "default" version
 	for zone in $(TIMEZONES); do \
 	  /usr/sbin/zic -d $(TZGEN) -L /dev/null -y yearistype.sh $${zone} ; \
-	done
-	
-	# Build the "posix" and "right" versions
-ifeq ($(EMDEBIAN),)
-	for zone in $(TIMEZONES); do \
 	  /usr/sbin/zic -d $(TZGEN)/posix -L /dev/null -y yearistype.sh $${zone} ; \
 	  /usr/sbin/zic -d $(TZGEN)/right -L leapseconds -y $(TZGEN)/yearistype.sh $${zone} ; \
 	done
-endif
 
 	# Generate a posixrules file
 	/usr/sbin/zic -d $(TZGEN) -p America/New_York
@@ -71,9 +50,6 @@ endif
 	# Replace hardlinks by symlinks
 	rdfind -outputname /dev/null -makesymlinks true -removeidentinode false $(TZGEN)
 	symlinks -r -s -c $(TZGEN)
-
-	# Generate a java version
-	$(JHOME)/bin/java -jar $(JHOME)/jre/lib/javazic.jar -V $(VERSION) -d $(TZGEN_JAVA) $(TIMEZONES) $(TIMEZONES_JAVA)
 
 	# Generate the templates file
 	( echo "Template: tzdata/Areas" ; \
@@ -109,45 +85,16 @@ endif
 	    echo ; \
 	done ) > $(TEMPLATES_FILE)
 	debconf-updatepo
-						
-	touch $@
 
-clean:
-	dh_testdir
-	dh_testroot
-	-rm -rf $(TZGEN) $(TZGEN_JAVA)
-	rm -f build-indep-stamp
-	rm -f patch-log
-	dh_clean
+override_dh_auto_test:
+	# The upstream tests are related to the sources. Just skip it.
 
-install: build
-	dh_testdir
-	dh_testroot
-	dh_prep
-	# Do nothing
+override_dh_auto_install:
+	# Nothing to do.
 
-# Build architecture-dependent files here.
-binary-arch: build install
-# We have nothing to do by default.
+override_dh_auto_clean:
+	-rm -rf $(TZGEN)
+	dh_auto_clean
 
-# Build architecture-independent files here.
-binary-indep: build install
-	dh_testdir
-	dh_testroot
-	dh_installdebconf
-	dh_installdirs
-	dh_install
-	dh_installchangelogs
-	dh_link
-	dh_installdocs
-	dh_compress
-	dh_fixperms
-	# Upstream ships this 755 for some bizarre reason:
-	chmod 644 debian/tzdata/usr/share/zoneinfo/leap-seconds.list
-	dh_installdeb
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-
-binary: binary-indep binary-arch
-.PHONY: build build-arch build-indep clean binary-indep binary-arch binary install
+override_dh_installchangelogs:
+	dh_installchangelogs NEWS
