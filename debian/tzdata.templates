@@ -103,7 +103,7 @@ Template: tzdata/Zones/US
 Type: select
 # Translators: do not translate underscores. You can use spaces instead.
 #flag:partial
-__Choices: Alaska, Aleutian, Arizona, Central, Eastern, Hawaii, Indiana-Starke, Michigan, Mountain, Pacific, Pacific-New, Samoa
+__Choices: Alaska, Aleutian, Arizona, Central, Eastern, Hawaii, Indiana-Starke, Michigan, Mountain, Pacific, Samoa
 _Description: Time zone:
  Please select the city or region corresponding to your time zone.
 
