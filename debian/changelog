@@ -1,3 +1,20 @@
+tzdata (2019b-0+deb9u1pexip1) pexip; urgency=medium
+
+  * New upstream release
+
+ -- Vincent Sanders <vince@pexip.com>  Thu, 07 Nov 2019 10:41:07 +0000
+
+tzdata (2019b-0+deb9u1) stretch; urgency=medium
+
+  * New upstream version, affecting the following past and future timestamps:
+    - Brazil has canceled DST and will stay on standard time indefinitely.
+    - Predictions for Morocco now go through 2087 instead of 2037.
+    - Palestine's 2019 spring transition was 03-29 at 00:00, not 03-30
+      at 01:00.  Guess future transitions to be March's last Friday at 00:00.
+    - Many corrections to historical Hong Kong transitions from 1941 to 1947.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 12 Aug 2019 11:45:17 +0200
+
 tzdata (2019a-0+deb9u1pexip1) pexip; urgency=medium
 
   * New upstream release
