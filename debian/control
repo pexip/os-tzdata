@@ -10,7 +10,7 @@ Standards-Version: 3.9.8
 Homepage: http://www.iana.org/time-zones
 Vcs-Git: https://salsa.debian.org/glibc-team/tzdata.git -b stretch
 Vcs-Browser: https://salsa.debian.org/glibc-team/tzdata
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ stretch
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ buster
 
 Package: tzdata
 Architecture: all
