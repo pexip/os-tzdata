@@ -3,12 +3,13 @@ Section: localization
 Priority: required
 Build-Depends: debhelper (>= 9)
 Build-Depends-Indep: po-debconf, rdfind, symlinks
+Rules-Requires-Root: no
 Maintainer: Pexip AS <packaging@pexip.com>
 XSBC-Pexip-Original-Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
 Uploaders: Clint Adams <clint@debian.org>, Aurelien Jarno <aurel32@debian.org>, Adam Conrad <adconrad@0c3.net>
-Standards-Version: 3.9.8
-Homepage: http://www.iana.org/time-zones
-Vcs-Git: https://salsa.debian.org/glibc-team/tzdata.git -b stretch
+Standards-Version: 4.2.1
+Homepage: https://www.iana.org/time-zones
+Vcs-Git: https://salsa.debian.org/glibc-team/tzdata.git
 Vcs-Browser: https://salsa.debian.org/glibc-team/tzdata
 XS-Pexip-Upstream: http://ftp.debian.org/debian/ buster
 
@@ -17,7 +18,7 @@ Architecture: all
 Multi-Arch: foreign
 Depends: ${misc:Depends}, debconf | debconf-2.0
 Replaces: libc0.1, libc0.3, libc6, libc6.1
-Provides: tzdata-stretch
+Provides: tzdata-buster
 Description: time zone and daylight-saving time data
  This package contains data required for the implementation of
  standard local time for many representative locations around the

@@ -78,7 +78,7 @@ override_dh_auto_build-indep:
 	    fi ; \
 	    cd $(CURDIR)/tzgen/$$i ; \
 	    find . -maxdepth 2 -type f -o -type l | sed -e 's#^\./##' | \
-	    	egrep -v '^(Ashkhabad|Chungking|Dacca|Macao|Thimbu|Ulan_Bator|Faeroe|ACT|LHI|NSW|North|Queensland|South|Tasmania|Victoria|West|Argentina/ComodRivadavia|Buenos_Aires|Catamarca|Cordoba|Jujuy|Mendoza|Rosario|Louisville|Fort_Wayne|Indianapolis|Knox_IN|East-Indiana|East-Starke|Asmera|South_Pole|Saigon|Calcutta|Katmandu)$$' | \
+		egrep -v '^(Ashkhabad|Chungking|Dacca|Macao|Thimbu|Ulan_Bator|Faeroe|ACT|LHI|NSW|North|Queensland|South|Tasmania|Victoria|West|Argentina/ComodRivadavia|Buenos_Aires|Catamarca|Cordoba|Jujuy|Mendoza|Rosario|Louisville|Fort_Wayne|Indianapolis|Knox_IN|East-Indiana|East-Starke|Asmera|South_Pole|Saigon|Calcutta|Katmandu|Pacific-New)$$' | \
 		sort -n | tr '\n' ',' | sed -e 's#,#, #g' -e 's#, $$#\n#' ; \
 	    echo "_Description: Time zone:" ; \
 	    echo " Please select the city or region corresponding to your time zone." ; \

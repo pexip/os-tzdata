@@ -1,10 +1,4 @@
-tzdata (2019c-0+deb9u1pexip1) pexip; urgency=medium
-
-  * New upstream release
-
- -- John-Mark Bell <jmb@pexip.com>  Mon, 13 Jan 2020 18:12:06 +0000
-
-tzdata (2019c-0+deb9u1) stretch; urgency=medium
+tzdata (2019c-0+deb10u1) buster; urgency=medium
 
   * New upstream version, affecting the following future timestamps:
     - Fiji's next DST transitions will be 2019-11-10 and 2020-01-12
@@ -12,15 +6,15 @@ tzdata (2019c-0+deb9u1) stretch; urgency=medium
     - Norfolk Island will observe Australian-style DST starting in
       spring 2019.  The first transition is on 2019-10-06.
 
- -- Aurelien Jarno <aurel32@debian.org>  Wed, 18 Sep 2019 00:40:44 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 17 Sep 2019 22:51:05 +0200
 
-tzdata (2019b-0+deb9u1pexip1) pexip; urgency=medium
+tzdata (2019c-0+deb9u1pexip1) pexip; urgency=medium
 
   * New upstream release
 
- -- Vincent Sanders <vince@pexip.com>  Thu, 07 Nov 2019 10:41:07 +0000
+ -- John-Mark Bell <jmb@pexip.com>  Mon, 13 Jan 2020 18:12:06 +0000
 
-tzdata (2019b-0+deb9u1) stretch; urgency=medium
+tzdata (2019b-0+deb10u1) buster; urgency=medium
 
   * New upstream version, affecting the following past and future timestamps:
     - Brazil has canceled DST and will stay on standard time indefinitely.
@@ -29,15 +23,15 @@ tzdata (2019b-0+deb9u1) stretch; urgency=medium
       at 01:00.  Guess future transitions to be March's last Friday at 00:00.
     - Many corrections to historical Hong Kong transitions from 1941 to 1947.
 
- -- Aurelien Jarno <aurel32@debian.org>  Mon, 12 Aug 2019 11:45:17 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 12 Aug 2019 11:48:43 +0200
 
-tzdata (2019a-0+deb9u1pexip1) pexip; urgency=medium
+tzdata (2019b-0+deb9u1pexip1) pexip; urgency=medium
 
   * New upstream release
 
- -- John-Mark Bell <jmb@pexip.com>  Fri, 24 May 2019 14:54:16 +0100
+ -- Vincent Sanders <vince@pexip.com>  Thu, 07 Nov 2019 10:41:07 +0000
 
-tzdata (2019a-0+deb9u1) stretch; urgency=medium
+tzdata (2019a-1) unstable; urgency=medium
 
   * New upstream version, affecting the following past and future
     timestamps:
@@ -46,7 +40,33 @@ tzdata (2019a-0+deb9u1) stretch; urgency=medium
     - Metlakatla ended its observance of Pacific standard time, rejoining
       Alaska Time, on 2019-01-20 at 02:00.
 
- -- Aurelien Jarno <aurel32@debian.org>  Wed, 27 Mar 2019 21:34:20 +0100
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 26 Mar 2019 23:05:57 +0100
+
+tzdata (2019a-0+deb9u1pexip1) pexip; urgency=medium
+
+  * New upstream release
+
+ -- John-Mark Bell <jmb@pexip.com>  Fri, 24 May 2019 14:54:16 +0100
+
+tzdata (2018i-2) unstable; urgency=medium
+
+  * Update German debconf translation, by Holger Wansing.  Closes:
+    #918455.
+  * Update Dutch debconf translation, by Frans Spiesschaert.  Closes:
+    #920427.
+  * Update Russian debconf translation, by Lev Lamberov.  Closes:
+    #920598.
+  * Update Danish debconf translation, by Joe Hansen.  Closes:
+    #923061.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Thu, 28 Feb 2019 22:56:09 +0100
+
+tzdata (2018i-1) unstable; urgency=high
+
+  * New upstream version, affecting the following future timestamps:
+    - São Tomé and Príncipe switches from +01 to +00 on 2019-01-01.
+
+ -- Clint Adams <clint@debian.org>  Sun, 30 Dec 2018 21:02:04 -0500
 
 tzdata (2018i-0+deb9u1pexip1) pexip; urgency=medium
 
@@ -54,14 +74,7 @@ tzdata (2018i-0+deb9u1pexip1) pexip; urgency=medium
 
  -- Vincent Sanders <vince@pexip.com>  Tue, 19 Feb 2019 12:10:30 +0000
 
-tzdata (2018i-0+deb9u1) stretch; urgency=medium
-
-  * New upstream version, affecting the following future timestamps:
-    - São Tomé and Príncipe switches from +01 to +00 on 2019-01-01.
-
- -- Aurelien Jarno <aurel32@debian.org>  Mon, 31 Dec 2018 10:43:58 +0100
-
-tzdata (2018h-0+deb9u1) stretch; urgency=medium
+tzdata (2018h-1) unstable; urgency=medium
 
   * New upstream version, affecting the following past and future
     timestamps:
@@ -70,7 +83,15 @@ tzdata (2018h-0+deb9u1) stretch; urgency=medium
       didn't move.
     - Metlakatla, Alaska observes PST this winter only.
 
- -- Aurelien Jarno <aurel32@debian.org>  Sun, 30 Dec 2018 14:11:33 +0100
+ -- Aurelien Jarno <aurel32@debian.org>  Sun, 30 Dec 2018 00:14:21 +0100
+
+tzdata (2018g-1) unstable; urgency=high
+
+  * New upstream version, affecting the following future timestamp:
+    - Morocco switches to permanent +01 on 2018-10-27.
+  * Urgency set to high as the change will happen the next hours.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 27 Oct 2018 15:14:23 +0200
 
 tzdata (2018g-0+deb9u1pexip1) pexip; urgency=medium
 
@@ -78,21 +99,27 @@ tzdata (2018g-0+deb9u1pexip1) pexip; urgency=medium
 
  -- John-Mark Bell <jmb@pexip.com>  Mon, 12 Nov 2018 20:10:30 +0000
 
-tzdata (2018g-0+deb9u1) stretch; urgency=medium
-
-  * New upstream version, affecting the following future timestamp:
-    - Morocco switches to permanent +01 on 2018-10-27.
-
- -- Aurelien Jarno <aurel32@debian.org>  Sat, 27 Oct 2018 15:20:17 +0200
-
-tzdata (2018f-0+deb9u1) stretch; urgency=medium
+tzdata (2018f-1) unstable; urgency=medium
 
   * New upstream version, affecting the following future timestamp:
     - Volgograd moves from +03 to +04 on 2018-10-28.
     - Fiji ends DST 2019-01-13, not 2019-01-20.
     - Most of Chile changes DST dates, effective 2019-04-06.
+  * Update French debconf translation, by Baptiste Jammet.  Closes:
+    #903425.
+  * Drop debian/source/options.
+  * Set Rules-Requires-Root: no.
+  * debian/control: Update Standards-Version to 4.2.1.
 
- -- Aurelien Jarno <aurel32@debian.org>  Thu, 18 Oct 2018 21:38:55 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Thu, 18 Oct 2018 20:22:56 +0200
+
+tzdata (2018e-1) unstable; urgency=medium
+
+  [ Aurelien Jarno ]
+  * New upstream version, affecting the following future timestamp:
+    - North Korea switches back to +09 on 2018-05-05.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Fri, 04 May 2018 13:12:53 +0200
 
 tzdata (2018e-0+deb9u1pexip1) pexip; urgency=medium
 
@@ -106,29 +133,57 @@ tzdata (2018e-0+deb8u1pexip1) pexip; urgency=low
 
  -- John-Mark Bell <jmb@pexip.com>  Thu, 05 Jul 2018 10:30:07 +0100
 
-tzdata (2018e-0+deb9u1) stretch; urgency=medium
+tzdata (2018d-1) unstable; urgency=medium
 
   [ Aurelien Jarno ]
-  * New upstream version, affecting the following future timestamp:
-    - North Korea switches back to +09 on 2018-05-05.
-
- -- Aurelien Jarno <aurel32@debian.org>  Fri, 04 May 2018 20:22:35 +0200
-
-tzdata (2018d-0+deb9u1) stretch; urgency=medium
-
-  * New upstream version.
-
- -- Clint Adams <clint@debian.org>  Mon, 26 Mar 2018 18:43:38 -0400
-
-tzdata (2018c-0+deb9u1) stretch; urgency=medium
-
-  * New upstream version, affecting the following past and future timestamps:
-    - São Tomé and Príncipe switched from +00 to +01 on 2018-01-01 at 01:00.
-    - Southern Brazil will begin DST on 2018-11-04 instead of 2018-10-21.
   * debian/control: Update Vcs-Git and Vcs-Browser fields following the move
     to Salsa.
 
- -- Aurelien Jarno <aurel32@debian.org>  Sat, 10 Feb 2018 12:43:04 +0100
+  [ Clint Adams ]
+  * New upstream version.
+  * Remove Pacific-New as a choice.  closes: #815200.
+
+ -- Clint Adams <clint@debian.org>  Mon, 26 Mar 2018 18:23:37 -0400
+
+tzdata (2018c-1) unstable; urgency=medium
+
+  [ Aurelien Jarno ]
+  * New upstream version.
+  * debian/control: Update Standards-Version to 4.1.3.
+  * debian/patches/quiltrc: Remove.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Thu, 25 Jan 2018 23:47:46 +0100
+
+tzdata (2018b-1) unstable; urgency=medium
+
+  [ Aurelien Jarno ]
+  * Update Russian debconf translation, by Lev Lamberov.  Closes:
+    #883876.
+  * Update German debconf translation, by Holger Wansing.  Closes:
+    #884811.
+
+  [ Clint Adams ]
+  * New upstream version.
+
+ -- Clint Adams <clint@debian.org>  Sat, 20 Jan 2018 23:04:41 -0500
+
+tzdata (2017c-1) unstable; urgency=medium
+
+  * New upstream version, affecting the following future timestamp:
+    - Northern Cyprus resumed EU rules starting 2017-10-29.
+    - Namibia will switch from +01 with DST to +02 all year, affecting
+      UT offsets starting 2018-04-01.
+    - Sudan will switch from +03 to +02 on 2017-11-01.
+    - Tonga will not observe DST on 2017-11-05.
+    - Turks & Caicos will switch from -04 all year to -05 with US DST,
+      affecting UT offset starting 2018-11-04.
+  * debian/control, debian/copyright: update upstream links to use https.
+  * debian/upstream/signing-key.asc: new file.
+  * debian/watch: update watch file to version 4, add check for the OpenPGP
+    signatures.
+  * debian/control: Update Standards-Version to 4.1.1.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Wed, 25 Oct 2017 00:55:42 +0200
 
 tzdata (2017c-0+deb8u1pexip2) pexip; urgency=low
 
@@ -142,18 +197,14 @@ tzdata (2017c-0+deb8u1pexip1) pexip; urgency=low
 
  -- John-Mark Bell <jmb@pexip.com>  Fri, 26 Jan 2018 13:10:31 +0000
 
-tzdata (2017c-0+deb9u1) stretch; urgency=medium
+tzdata (2017b-2) unstable; urgency=medium
 
-  * New upstream version, affecting the following future timestamp:
-    - Northern Cyprus resumed EU rules starting 2017-10-29.
-    - Namibia will switch from +01 with DST to +02 all year, affecting
-      UT offsets starting 2018-04-01.
-    - Sudan will switch from +03 to +02 on 2017-11-01.
-    - Tonga will not observe DST on 2017-11-05.
-    - Turks & Caicos will switch from -04 all year to -05 with US DST,
-      affecting UT offset starting 2018-11-04.
+  [ Aurelien Jarno ]
+  * Update Dutch debconf translation, by Frans Spiesschaert.  Closes:
+    #861700.
+  * debian/control: provide tzdata-buster instead of tzdata-stretch.
 
- -- Aurelien Jarno <aurel32@debian.org>  Wed, 25 Oct 2017 01:22:36 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Sun, 18 Jun 2017 18:46:11 +0200
 
 tzdata (2017b-0+deb8u1pexip1) pexip; urgency=low
 

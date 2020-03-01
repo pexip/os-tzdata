@@ -1,14 +1,14 @@
 # Danish messages for the tzdata.
-# Copyright (C) 2017 tzdata & nedenstående oversættere.
+# Copyright (C) 2019 tzdata & nedenstående oversættere.
 # This file is distributed under the same license as the tzdata package.
-# Joe Hansen <joedalton2@yahoo.dk>, 2010, 2011, 2013, 2016, 2017.
+# Joe Hansen <joedalton2@yahoo.dk>, 2010, 2011, 2013, 2016, 2017, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: tzdata\n"
 "Report-Msgid-Bugs-To: tzdata@packages.debian.org\n"
-"POT-Creation-Date: 2018-12-30 13:09+0000\n"
-"PO-Revision-Date: 2017-03-12 18:21+0100\n"
+"POT-Creation-Date: 2018-12-29 23:10+0000\n"
+"PO-Revision-Date: 2019-02-23 18:21+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <debian-l10n-danish@lists.debian.org> \n"
 "Language: da\n"
@@ -1471,7 +1471,7 @@ msgstr "Puerto Rico"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:3001
 msgid "Punta_Arenas"
-msgstr ""
+msgstr "Punta Arenas"
 
 #. Type: select
 #. Choices
@@ -2331,7 +2331,7 @@ msgstr "Qatar"
 #. Translators: do not translate underscores. You can use spaces instead.
 #: ../tzdata.templates:7001
 msgid "Qostanay"
-msgstr ""
+msgstr "Qostanay"
 
 #. Type: select
 #. Choices
@@ -3473,9 +3473,5 @@ msgstr "Michigan"
 msgid "Mountain"
 msgstr "Mountain"
 
-#. Type: select
-#. Choices
-#. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:13001
-msgid "Pacific-New"
-msgstr "Stillehavstid-ny"
+#~ msgid "Pacific-New"
+#~ msgstr "Stillehavstid-ny"

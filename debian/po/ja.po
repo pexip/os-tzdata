@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tzdata\n"
 "Report-Msgid-Bugs-To: tzdata@packages.debian.org\n"
-"POT-Creation-Date: 2018-12-30 13:09+0000\n"
+"POT-Creation-Date: 2018-12-29 23:10+0000\n"
 "PO-Revision-Date: 2016-11-25 04:51+0900\n"
 "Last-Translator: Takuma Yamada <tyamada@takumayamada.com>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
@@ -3470,9 +3470,5 @@ msgstr "ミシガン"
 msgid "Mountain"
 msgstr "マウンテン"
 
-#. Type: select
-#. Choices
-#. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:13001
-msgid "Pacific-New"
-msgstr "太平洋-新"
+#~ msgid "Pacific-New"
+#~ msgstr "太平洋-新"
