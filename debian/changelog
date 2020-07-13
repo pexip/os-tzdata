@@ -1,3 +1,17 @@
+tzdata (2020a-0+deb10u1) pexip; urgency=medium
+
+  * New upstream release
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Mon, 13 Jul 2020 11:41:49 +0100
+
+tzdata (2020a-0+deb10u1) buster; urgency=medium
+
+  * New upstream version, affecting the following future timestamps:
+    - Morocco springs forward on 2020-05-31, not 2020-05-24.
+    - Canada's Yukon advanced to -07 year-round on 2020-03-08.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 27 Apr 2020 12:46:23 +0200
+
 tzdata (2019c-0+deb10u1pexip1) pexip; urgency=medium
 
   * Migrate to Buster
