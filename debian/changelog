@@ -1,3 +1,33 @@
+tzdata (2020d-0+deb10u1pexip1) pexip; urgency=medium
+
+  * New upstream release
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Mon, 26 Oct 2020 17:04:02 +0000
+
+tzdata (2020d-0+deb10u1) buster; urgency=medium
+
+  * New upstream version, affecting the following future timestamp:
+    - Palestine ends DST earlier than predicted, on 2020-10-24.
+    - Fiji starts DST later than usual, on 2020-12-20.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Thu, 22 Oct 2020 21:41:49 +0200
+
+tzdata (2020b-0+deb10u1) buster; urgency=medium
+
+  * New upstream version, affecting the following past and future
+    timestamps:
+    - Revised predictions for Morocco's changes starting in 2023.
+    - Macquarie Island has stayed in sync with Tasmania since 2011.
+    - Casey, Antarctica is at +08 in winter and +11 in summer since 2018.
+  * Restore the pacificnew and systemv files that have been removed
+    upstream. The corresponding timezones have been removed from the
+    bullseye/sid package, with the switch to the new names handle by the
+    maintainer scripts. However we do not want to transition to the new
+    names in a stable release.
+  * Update debian/upstream/signing-key.asc.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sun, 11 Oct 2020 15:36:25 +0200
+
 tzdata (2020a-0+deb10u1pexip1) pexip; urgency=medium
 
   * New upstream release
