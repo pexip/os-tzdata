@@ -1,3 +1,10 @@
+tzdata (2020e-0+deb10u1) buster; urgency=medium
+
+  * New upstream version, affecting the following future timestamp:
+    - Volgograd switches to Moscow time on 2020-12-27 at 02:00.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Wed, 23 Dec 2020 18:37:55 +0100
+
 tzdata (2020d-0+deb10u1) buster; urgency=medium
 
   * New upstream version, affecting the following future timestamp:
