@@ -1,3 +1,16 @@
+tzdata (2021a-0+deb10u1pexip1) pexip; urgency=medium
+
+  * New upstream release
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Mon, 01 Feb 2021 11:01:10 +0000
+
+tzdata (2021a-0+deb10u1) buster; urgency=medium
+
+  * New upstream version, affecting the following future timestamp:
+    - South Sudan changes from +03 to +02 on 2021-02-01 at 00:00.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Wed, 27 Jan 2021 20:21:01 +0100
+
 tzdata (2020e-0+deb10u1pexip1) pexip; urgency=medium
 
   * New upstream release
