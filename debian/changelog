@@ -1,3 +1,14 @@
+tzdata (2021a-0+deb10u2) buster; urgency=medium
+
+  * Cherry-pick patches from tzdata-2021b until the upstream situation gets
+    less confused:
+    - 01-no-leap-second-2021-12-31.patch: No leap second on 2021-12-31 as per
+      IERS Bulletin C 62.
+    - 02-samoa-dst.patch: Samoa no longer observes DST.
+    - 03-jordan-dst.patch: Jordan now starts DST on February's last Thursday.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 27 Sep 2021 18:53:26 +0200
+
 tzdata (2021a-0+deb10u1) buster; urgency=medium
 
   * New upstream version, affecting the following future timestamp:
