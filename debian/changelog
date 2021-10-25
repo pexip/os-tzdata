@@ -1,3 +1,12 @@
+tzdata (2021a-0+deb10u3) buster; urgency=medium
+
+  * Cherry-pick patches from tzdata-2021d and tzdata-2021e:
+    - 04-fiji-dst.patch: Fiji suspends DST for the 2021/2022 season.
+    - 05-palestine-dst.patch: Palestine will fall back 2021-10-29 (not
+      2021-10-30) at 01:00.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 25 Oct 2021 19:28:20 +0200
+
 tzdata (2021a-0+deb10u2) buster; urgency=medium
 
   * Cherry-pick patches from tzdata-2021b until the upstream situation gets
