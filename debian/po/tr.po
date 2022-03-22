@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tzdata 2008i-2\n"
 "Report-Msgid-Bugs-To: tzdata@packages.debian.org\n"
-"POT-Creation-Date: 2018-12-29 23:10+0000\n"
+"POT-Creation-Date: 2020-10-10 22:38+0200\n"
 "PO-Revision-Date: 2014-08-01 04:20+0200\n"
 "Last-Translator: Mert Dirik <mertdirik@gmail.com>\n"
 "Language-Team: Debian L10n Turkish <debian-l10n-turkish@lists.debian.org>\n"
@@ -23,8 +23,6 @@ msgstr ""
 #. Note to translators:
 #. - "Etc" will present users with a list
 #. of "GMT+xx" or "GMT-xx" timezones
-#. - SystemV will give the choice between zone named as per SystemV conventions:
-#. EST5, MST7, etc.
 #: ../tzdata.templates:1001
 msgid "Africa"
 msgstr "Afrika"
@@ -34,8 +32,6 @@ msgstr "Afrika"
 #. Note to translators:
 #. - "Etc" will present users with a list
 #. of "GMT+xx" or "GMT-xx" timezones
-#. - SystemV will give the choice between zone named as per SystemV conventions:
-#. EST5, MST7, etc.
 #: ../tzdata.templates:1001
 msgid "America"
 msgstr "Amerika"
@@ -45,8 +41,6 @@ msgstr "Amerika"
 #. Note to translators:
 #. - "Etc" will present users with a list
 #. of "GMT+xx" or "GMT-xx" timezones
-#. - SystemV will give the choice between zone named as per SystemV conventions:
-#. EST5, MST7, etc.
 #: ../tzdata.templates:1001
 msgid "Antarctica"
 msgstr "Antarktika"
@@ -56,8 +50,6 @@ msgstr "Antarktika"
 #. Note to translators:
 #. - "Etc" will present users with a list
 #. of "GMT+xx" or "GMT-xx" timezones
-#. - SystemV will give the choice between zone named as per SystemV conventions:
-#. EST5, MST7, etc.
 #: ../tzdata.templates:1001
 msgid "Australia"
 msgstr "Avustralya"
@@ -67,8 +59,6 @@ msgstr "Avustralya"
 #. Note to translators:
 #. - "Etc" will present users with a list
 #. of "GMT+xx" or "GMT-xx" timezones
-#. - SystemV will give the choice between zone named as per SystemV conventions:
-#. EST5, MST7, etc.
 #: ../tzdata.templates:1001
 msgid "Arctic"
 msgstr "Kuzey Kutbu"
@@ -78,8 +68,6 @@ msgstr "Kuzey Kutbu"
 #. Note to translators:
 #. - "Etc" will present users with a list
 #. of "GMT+xx" or "GMT-xx" timezones
-#. - SystemV will give the choice between zone named as per SystemV conventions:
-#. EST5, MST7, etc.
 #: ../tzdata.templates:1001
 msgid "Asia"
 msgstr "Asya"
@@ -89,8 +77,6 @@ msgstr "Asya"
 #. Note to translators:
 #. - "Etc" will present users with a list
 #. of "GMT+xx" or "GMT-xx" timezones
-#. - SystemV will give the choice between zone named as per SystemV conventions:
-#. EST5, MST7, etc.
 #: ../tzdata.templates:1001
 msgid "Atlantic"
 msgstr "Atlantik"
@@ -100,8 +86,6 @@ msgstr "Atlantik"
 #. Note to translators:
 #. - "Etc" will present users with a list
 #. of "GMT+xx" or "GMT-xx" timezones
-#. - SystemV will give the choice between zone named as per SystemV conventions:
-#. EST5, MST7, etc.
 #: ../tzdata.templates:1001
 msgid "Europe"
 msgstr "Avrupa"
@@ -111,8 +95,6 @@ msgstr "Avrupa"
 #. Note to translators:
 #. - "Etc" will present users with a list
 #. of "GMT+xx" or "GMT-xx" timezones
-#. - SystemV will give the choice between zone named as per SystemV conventions:
-#. EST5, MST7, etc.
 #: ../tzdata.templates:1001
 msgid "Indian"
 msgstr "Hindistan"
@@ -122,12 +104,10 @@ msgstr "Hindistan"
 #. Note to translators:
 #. - "Etc" will present users with a list
 #. of "GMT+xx" or "GMT-xx" timezones
-#. - SystemV will give the choice between zone named as per SystemV conventions:
-#. EST5, MST7, etc.
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:1001 ../tzdata.templates:13001
+#: ../tzdata.templates:1001 ../tzdata.templates:12001
 msgid "Pacific"
 msgstr "Pasifik"
 
@@ -136,19 +116,6 @@ msgstr "Pasifik"
 #. Note to translators:
 #. - "Etc" will present users with a list
 #. of "GMT+xx" or "GMT-xx" timezones
-#. - SystemV will give the choice between zone named as per SystemV conventions:
-#. EST5, MST7, etc.
-#: ../tzdata.templates:1001
-msgid "SystemV"
-msgstr "SystemV"
-
-#. Type: select
-#. Choices
-#. Note to translators:
-#. - "Etc" will present users with a list
-#. of "GMT+xx" or "GMT-xx" timezones
-#. - SystemV will give the choice between zone named as per SystemV conventions:
-#. EST5, MST7, etc.
 #: ../tzdata.templates:1001
 msgid "US"
 msgstr "US"
@@ -158,8 +125,6 @@ msgstr "US"
 #. Note to translators:
 #. - "Etc" will present users with a list
 #. of "GMT+xx" or "GMT-xx" timezones
-#. - SystemV will give the choice between zone named as per SystemV conventions:
-#. EST5, MST7, etc.
 #: ../tzdata.templates:1001
 msgid "Etc"
 msgstr "Diğer"
@@ -577,13 +542,11 @@ msgstr "Windhoek"
 #. Description
 #. Type: select
 #. Description
-#. Type: select
-#. Description
 #: ../tzdata.templates:2002 ../tzdata.templates:3002 ../tzdata.templates:4002
 #: ../tzdata.templates:5002 ../tzdata.templates:6002 ../tzdata.templates:7002
 #: ../tzdata.templates:8002 ../tzdata.templates:9002 ../tzdata.templates:10002
-#: ../tzdata.templates:11002 ../tzdata.templates:12001
-#: ../tzdata.templates:13002 ../tzdata.templates:14001
+#: ../tzdata.templates:11002 ../tzdata.templates:12002
+#: ../tzdata.templates:13001
 msgid "Time zone:"
 msgstr "Saat dilimi:"
 
@@ -611,13 +574,11 @@ msgstr "Saat dilimi:"
 #. Description
 #. Type: select
 #. Description
-#. Type: select
-#. Description
 #: ../tzdata.templates:2002 ../tzdata.templates:3002 ../tzdata.templates:4002
 #: ../tzdata.templates:5002 ../tzdata.templates:6002 ../tzdata.templates:7002
 #: ../tzdata.templates:8002 ../tzdata.templates:9002 ../tzdata.templates:10002
-#: ../tzdata.templates:11002 ../tzdata.templates:12001
-#: ../tzdata.templates:13002 ../tzdata.templates:14001
+#: ../tzdata.templates:11002 ../tzdata.templates:12002
+#: ../tzdata.templates:13001
 msgid "Please select the city or region corresponding to your time zone."
 msgstr "Lütfen saat diliminize karşılık gelen şehir ya da bölgeyi seçin."
 
@@ -1397,6 +1358,13 @@ msgstr "Kuzey Dakota/Merkez"
 #: ../tzdata.templates:3001
 msgid "North_Dakota/New_Salem"
 msgstr "Kuzey Dakota/Yeni Salem"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:3001
+msgid "Nuuk"
+msgstr ""
 
 #. Type: select
 #. Choices
@@ -3362,7 +3330,7 @@ msgstr "Saipan"
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:11001 ../tzdata.templates:13001
+#: ../tzdata.templates:11001 ../tzdata.templates:12001
 msgid "Samoa"
 msgstr "Samoa"
 
@@ -3418,65 +3386,68 @@ msgstr "Yap"
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:13001
+#: ../tzdata.templates:12001
 msgid "Alaska"
 msgstr "Alaska"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:13001
+#: ../tzdata.templates:12001
 msgid "Aleutian"
 msgstr "Aleut"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:13001
+#: ../tzdata.templates:12001
 msgid "Arizona"
 msgstr "Arizona"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:13001
+#: ../tzdata.templates:12001
 msgid "Central"
 msgstr "Merkez"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:13001
+#: ../tzdata.templates:12001
 msgid "Eastern"
 msgstr "Doğu"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:13001
+#: ../tzdata.templates:12001
 msgid "Hawaii"
 msgstr "Hawaii"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:13001
+#: ../tzdata.templates:12001
 msgid "Indiana-Starke"
 msgstr "Indiana-Starke"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:13001
+#: ../tzdata.templates:12001
 msgid "Michigan"
 msgstr "Michigan"
 
 #. Type: select
 #. Choices
 #. Translators: do not translate underscores. You can use spaces instead.
-#: ../tzdata.templates:13001
+#: ../tzdata.templates:12001
 msgid "Mountain"
 msgstr "Mountain"
+
+#~ msgid "SystemV"
+#~ msgstr "SystemV"
 
 #~ msgid "Pacific-New"
 #~ msgstr "Pasifik-Yeni"

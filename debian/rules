@@ -3,20 +3,6 @@
 export LC_ALL=C
 
 TZGEN := $(CURDIR)/tzgen
-VERSION := $(shell dpkg-parsechangelog | sed -e '/^Version/!d;s/^Version: //g;s/.*://g;s/-.*//g')
-
-TIMEZONES := africa \
-             antarctica \
-             asia \
-             australasia \
-             europe \
-             northamerica \
-             southamerica \
-             etcetera \
-             factory \
-             backward \
-             systemv \
-	     pacificnew
 
 TEMPLATES_FILE := $(CURDIR)/debian/tzdata.templates
 TEMPLATES_AREAS := Africa \
@@ -29,7 +15,6 @@ TEMPLATES_AREAS := Africa \
 		   Europe \
 		   Indian \
 		   Pacific \
-		   SystemV \
 		   US \
 		   Etc
 
@@ -37,19 +22,27 @@ TEMPLATES_AREAS := Africa \
 	dh $@
 
 override_dh_auto_build-indep:
-	# Build the "default" version
-	for zone in $(TIMEZONES); do \
-	  /usr/sbin/zic -d $(TZGEN) -L /dev/null -y yearistype.sh $${zone} ; \
-	  /usr/sbin/zic -d $(TZGEN)/posix -L /dev/null -y yearistype.sh $${zone} ; \
-	  /usr/sbin/zic -d $(TZGEN)/right -L leapseconds -y $(TZGEN)/yearistype.sh $${zone} ; \
-	done
+	# Generate a tzdata.zi file
+	$(MAKE) AWK=gawk BACKWARD="backward" VERSION_DEPS= tzdata.zi
 
-	# Generate a posixrules file
-	/usr/sbin/zic -d $(TZGEN) -p America/New_York
+	# Generate the leapseconds file
+	$(MAKE) AWK=gawk leapseconds
+
+	# Build the timezone data
+	/usr/sbin/zic -d $(TZGEN) -L /dev/null tzdata.zi ; \
+	/usr/sbin/zic -d $(TZGEN)/posix -L /dev/null tzdata.zi ; \
+	/usr/sbin/zic -d $(TZGEN)/right -L leapseconds tzdata.zi ; \
 
 	# Replace hardlinks by symlinks
-	rdfind -outputname /dev/null -makesymlinks true -removeidentinode false $(TZGEN)
+	grep '^L ' $(CURDIR)/tzdata.zi | while read L target name ; do \
+		ln -sf $(TZGEN)/$$target $(TZGEN)/$$name ; \
+		ln -sf $(TZGEN)/posix/$$target $(TZGEN)/posix/$$name ; \
+		ln -sf $(TZGEN)/right/$$target $(TZGEN)/right/$$name ; \
+	done
 	symlinks -r -s -c $(TZGEN)
+
+	# Generate a posixrules file
+	ln -s America/New_York $(TZGEN)/posixrules
 
 	# Generate the templates file
 	( echo "Template: tzdata/Areas" ; \
@@ -57,8 +50,6 @@ override_dh_auto_build-indep:
 	echo "# Note to translators:" ; \
 	echo "# - \"Etc\" will present users with a list" ; \
 	echo "#    of \"GMT+xx\" or \"GMT-xx\" timezones" ; \
-	echo "# - SystemV will give the choice between zone named as per SystemV conventions:" ; \
-	echo "#   EST5, MST7, etc." ; \
 	echo -n "__Choices: " ; \
 	echo "$(TEMPLATES_AREAS)" | sed -e 's# #, #g' -e 's#, $$##' ; \
 	echo "_Description: Geographic area:" ; \
@@ -71,7 +62,7 @@ override_dh_auto_build-indep:
 	    echo "Type: select" ; \
 	    echo "# Translators: do not translate underscores. You can use spaces instead." ; \
 	    echo "#flag:partial" ; \
-	    if [ "$$i" = "Etc" ] || [ "$$i" = "SystemV" ] ; then \
+	    if [ "$$i" = "Etc" ] ; then \
 		    echo -n "Choices: " ; \
 	    else \
 		    echo -n "__Choices: " ; \
