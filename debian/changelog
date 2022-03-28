@@ -1,3 +1,17 @@
+tzdata (2021a-0+deb10u4pexip1) pexip; urgency=medium
+
+  * New upstream release
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Mon, 28 Mar 2022 16:34:18 +0100
+
+tzdata (2021a-0+deb10u4) buster; urgency=medium
+
+  * Cherry-pick patches from tzdata-2022a:
+   - 06-palestine-dst2.patch: Palestine will spring forward on 2022-03-27,
+     not -03-26.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 22 Mar 2022 23:11:15 +0100
+
 tzdata (2021a-0+deb10u3pexip1) pexip; urgency=medium
 
   * New upstream release
