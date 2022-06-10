@@ -1,3 +1,11 @@
+tzdata (2021a-1+deb11u4) bullseye; urgency=medium
+
+  * Cherry-pick patches from upstream:
+    - 07-no-leap-second-2022-06-30.patch: update leap-seconds.list, new
+      expiration date on 28 December 2022.  Closes: #1012191.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Fri, 10 Jun 2022 19:59:11 +0200
+
 tzdata (2021a-1+deb11u3) bullseye; urgency=medium
 
   * Cherry-pick patches from tzdata-2022a:
