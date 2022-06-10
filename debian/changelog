@@ -1,21 +1,29 @@
-tzdata (2021a-1+deb11u3) bullseye; urgency=medium
+tzdata (2021a-0+deb10u5) buster; urgency=medium
+
+  * Cherry-pick patches from upstream:
+    - 07-no-leap-second-2022-06-30.patch: update leap-seconds.list, new
+      expiration date on 28 December 2022.  Closes: #1012191.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Fri, 10 Jun 2022 20:21:38 +0200
+
+tzdata (2021a-0+deb10u4) buster; urgency=medium
 
   * Cherry-pick patches from tzdata-2022a:
-    - 06-palestine-dst2.patch: Palestine will spring forward on 2022-03-27,
-      not -03-26..
+   - 06-palestine-dst2.patch: Palestine will spring forward on 2022-03-27,
+     not -03-26.
 
- -- Aurelien Jarno <aurel32@debian.org>  Tue, 22 Mar 2022 22:07:41 +0100
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 22 Mar 2022 23:11:15 +0100
 
-tzdata (2021a-1+deb11u2) bullseye; urgency=medium
+tzdata (2021a-0+deb10u3) buster; urgency=medium
 
   * Cherry-pick patches from tzdata-2021d and tzdata-2021e:
     - 04-fiji-dst.patch: Fiji suspends DST for the 2021/2022 season.
     - 05-palestine-dst.patch: Palestine will fall back 2021-10-29 (not
       2021-10-30) at 01:00.
 
- -- Aurelien Jarno <aurel32@debian.org>  Mon, 25 Oct 2021 19:14:46 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 25 Oct 2021 19:28:20 +0200
 
-tzdata (2021a-1+deb11u1) bullseye; urgency=medium
+tzdata (2021a-0+deb10u2) buster; urgency=medium
 
   * Cherry-pick patches from tzdata-2021b until the upstream situation gets
     less confused:
@@ -24,118 +32,65 @@ tzdata (2021a-1+deb11u1) bullseye; urgency=medium
     - 02-samoa-dst.patch: Samoa no longer observes DST.
     - 03-jordan-dst.patch: Jordan now starts DST on February's last Thursday.
 
- -- Aurelien Jarno <aurel32@debian.org>  Mon, 27 Sep 2021 18:27:10 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 27 Sep 2021 18:53:26 +0200
 
-tzdata (2021a-1) unstable; urgency=medium
+tzdata (2021a-0+deb10u1) buster; urgency=medium
 
   * New upstream version, affecting the following future timestamp:
     - South Sudan changes from +03 to +02 on 2021-02-01 at 00:00.
 
- -- Aurelien Jarno <aurel32@debian.org>  Sun, 24 Jan 2021 23:05:23 +0100
+ -- Aurelien Jarno <aurel32@debian.org>  Wed, 27 Jan 2021 20:21:01 +0100
 
-tzdata (2020f-1) unstable; urgency=medium
-
-  * New upstream version with no impact on the content of the debian
-    package, except for the version number.
-
- -- Aurelien Jarno <aurel32@debian.org>  Sat, 02 Jan 2021 18:43:15 +0100
-
-tzdata (2020e-1) unstable; urgency=medium
+tzdata (2020e-0+deb10u1) buster; urgency=medium
 
   * New upstream version, affecting the following future timestamp:
     - Volgograd switches to Moscow time on 2020-12-27 at 02:00.
 
- -- Aurelien Jarno <aurel32@debian.org>  Wed, 23 Dec 2020 10:41:32 +0100
+ -- Aurelien Jarno <aurel32@debian.org>  Wed, 23 Dec 2020 18:37:55 +0100
 
-tzdata (2020d-1) unstable; urgency=high
+tzdata (2020d-0+deb10u1) buster; urgency=medium
 
   * New upstream version, affecting the following future timestamp:
     - Palestine ends DST earlier than predicted, on 2020-10-24.
-  * Set urgency to high to get the package into testing before the next
-    change.
-
- -- Aurelien Jarno <aurel32@debian.org>  Wed, 21 Oct 2020 22:21:30 +0200
-
-tzdata (2020c-1) unstable; urgency=medium
-
-  * New upstream version, affecting the following future timestamp:
     - Fiji starts DST later than usual, on 2020-12-20.
 
- -- Aurelien Jarno <aurel32@debian.org>  Sat, 17 Oct 2020 01:21:17 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Thu, 22 Oct 2020 21:41:49 +0200
 
-tzdata (2020b-1) unstable; urgency=medium
+tzdata (2020b-0+deb10u1) buster; urgency=medium
 
   * New upstream version, affecting the following past and future
     timestamps:
     - Revised predictions for Morocco's changes starting in 2023.
     - Macquarie Island has stayed in sync with Tasmania since 2011.
     - Casey, Antarctica is at +08 in winter and +11 in summer since 2018.
-  * Update German debconf translation, by Helge Kreutzmann.  Closes:
-    #960783.
-  * Update Dutch debconf translation, by Frans Spiesschaert.  Closes:
-    #963007.
-  * Update Portuguese debconf translation, by Rui Branco.  Closes:
-    #871051.
+  * Restore the pacificnew and systemv files that have been removed
+    upstream. The corresponding timezones have been removed from the
+    bullseye/sid package, with the switch to the new names handle by the
+    maintainer scripts. However we do not want to transition to the new
+    names in a stable release.
   * Update debian/upstream/signing-key.asc.
-  * Get rid of old SystemV timezones, as this has been fully removed
-    upstream. Convert existing configuration to the "new" America/*
-    names.
-  * Drop pacificnew support, it has been removed upstream.
 
- -- Aurelien Jarno <aurel32@debian.org>  Sat, 10 Oct 2020 22:50:56 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Sun, 11 Oct 2020 15:36:25 +0200
 
-tzdata (2020a-1) unstable; urgency=medium
+tzdata (2020a-0+deb10u1) buster; urgency=medium
 
   * New upstream version, affecting the following future timestamps:
     - Morocco springs forward on 2020-05-31, not 2020-05-24.
     - Canada's Yukon advanced to -07 year-round on 2020-03-08.
-  * Bump Standards-Version to 4.5.0 (no changes).
 
- -- Aurelien Jarno <aurel32@debian.org>  Fri, 24 Apr 2020 21:32:19 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 27 Apr 2020 12:46:23 +0200
 
-tzdata (2019c-3) unstable; urgency=medium
-
-  * Build the timezone data from tzdata.zi. 
-  * Install leapseconds file /usr/share/zoneinfo.
-  * Bump Standards-Version to 4.4.1 (no changes).
-
- -- Aurelien Jarno <aurel32@debian.org>  Tue, 01 Oct 2019 22:53:04 +0200
-
-tzdata (2019c-2) unstable; urgency=medium
-
-  [ Paul Eggert ]
-  * Install tzdata.zi file in /usr/share/zoneinfo.  Closes: #940852.
-
-  [ Aurelien Jarno ]
-  * Use tzdata.zi to change hardlinks into symlinks.
-  * Bump debhelper compatibility to 12.
-  * Bump Standards-Version to 4.4.0 (no changes).
-  * Drop Replaces on libc6, it is not needed anymore since Lenny.
-  * Depends on gawk and use it instead of mawk which crashes with a memory
-    corruption.
-
- -- Aurelien Jarno <aurel32@debian.org>  Sun, 29 Sep 2019 00:56:50 +0200
-
-tzdata (2019c-1) unstable; urgency=medium
+tzdata (2019c-0+deb10u1) buster; urgency=medium
 
   * New upstream version, affecting the following future timestamps:
     - Fiji's next DST transitions will be 2019-11-10 and 2020-01-12
       instead of 2019-11-03 and 2020-01-19.
     - Norfolk Island will observe Australian-style DST starting in
       spring 2019.  The first transition is on 2019-10-06.
-  * Update French debconf translation, by Baptiste Jammet.  Closes:
-    #935153.
-  * debian/rules: drop obsolete -y zic option.
 
- -- Aurelien Jarno <aurel32@debian.org>  Wed, 11 Sep 2019 23:05:32 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 17 Sep 2019 22:51:05 +0200
 
-tzdata (2019b-2) unstable; urgency=medium
-
-  * Change provides to tzdata-bullseye from tzdata-buster.
-
- -- Aurelien Jarno <aurel32@debian.org>  Mon, 12 Aug 2019 11:40:33 +0200
-
-tzdata (2019b-1) unstable; urgency=medium
+tzdata (2019b-0+deb10u1) buster; urgency=medium
 
   * New upstream version, affecting the following past and future timestamps:
     - Brazil has canceled DST and will stay on standard time indefinitely.
@@ -144,7 +99,7 @@ tzdata (2019b-1) unstable; urgency=medium
       at 01:00.  Guess future transitions to be March's last Friday at 00:00.
     - Many corrections to historical Hong Kong transitions from 1941 to 1947.
 
- -- Adam Conrad <adconrad@0c3.net>  Thu, 04 Jul 2019 15:04:32 -0600
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 12 Aug 2019 11:48:43 +0200
 
 tzdata (2019a-1) unstable; urgency=medium
 
