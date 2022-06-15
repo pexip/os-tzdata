@@ -1,3 +1,17 @@
+tzdata (2021a-0+deb10u5pexip1) pexip; urgency=medium
+
+  * New upstream release
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Wed, 15 Jun 2022 16:29:59 +0100
+
+tzdata (2021a-0+deb10u5) buster; urgency=medium
+
+  * Cherry-pick patches from upstream:
+    - 07-no-leap-second-2022-06-30.patch: update leap-seconds.list, new
+      expiration date on 28 December 2022.  Closes: #1012191.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Fri, 10 Jun 2022 20:21:38 +0200
+
 tzdata (2021a-0+deb10u4pexip1) pexip; urgency=medium
 
   * New upstream release
