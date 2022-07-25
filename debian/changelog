@@ -1,3 +1,9 @@
+tzdata (2021a-1+deb11u4pexip1) pexip-bullseye; urgency=medium
+
+  * New upstream release: point release.
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Mon, 25 Jul 2022 12:23:00 +0100
+
 tzdata (2021a-1+deb11u4) bullseye; urgency=medium
 
   * Cherry-pick patches from upstream:
