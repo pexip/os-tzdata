@@ -1,5 +1,3 @@
-pacificnew.diff -p1
-systemv.diff -p1
 01-no-leap-second-2021-12-31.patch
 02-samoa-dst.patch
 03-jordan-dst.patch
