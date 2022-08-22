@@ -1,3 +1,9 @@
+tzdata (2021a-0+deb10u6pexip1) pexip; urgency=medium
+
+  * New upstream release.
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Mon, 22 Aug 2022 10:35:28 +0100
+
 tzdata (2021a-0+deb10u6) buster; urgency=medium
 
   * Cherry-pick patches from upstream:
