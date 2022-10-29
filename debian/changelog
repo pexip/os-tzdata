@@ -1,3 +1,34 @@
+tzdata (2021a-1+deb11u8) bullseye; urgency=medium
+
+  * Cherry-pick patches from upstream:
+    - 14-fiji-dst.patch: Fiji no longer observes DST.
+    - 15-mexico-dst.patch: Mexico will no longer observe DST except near the
+      US border. Chihuahua moves to year-round -06 on 2022-10-30.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 29 Oct 2022 14:12:56 +0200
+
+tzdata (2021a-1+deb11u7) bullseye; urgency=medium
+
+  * Cherry-pick patches from upstream:
+    - 12-syria-dst.patch: Syria is abandoning the DST regime and is
+      changing to permanent +03, so it will not fall back from +03 to
+      +02 on 2022-10-28.
+    - 13-jordan-dst.patch: Jordan is abandoning the DST regime and are
+      changing to permanent +03, so it will not fall back from +03 to
+      +02 on 2022-10-28.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 15 Oct 2022 11:46:50 +0200
+
+tzdata (2021a-1+deb11u6) bullseye; urgency=medium
+
+  * Cherry-pick patches from upstream:
+    - 10-no-leap-second-2022-12-31.patch: update leap-seconds.list, new
+      expiration date on 28 June 2023.
+    - 11-palestine-dst3.patch: Palestine transitions are now Saturdays at
+      02:00. This means 2022 falls back 10-29 at 02:00, not 10-28 at 01:00.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 01 Oct 2022 23:34:39 +0200
+
 tzdata (2021a-1+deb11u5) bullseye; urgency=medium
 
   * Cherry-pick patches from upstream:
