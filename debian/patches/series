@@ -7,3 +7,9 @@
 07-no-leap-second-2022-06-30.patch
 08-iran-dst.patch
 09-chile-dst.patch
+10-no-leap-second-2022-12-31.patch
+11-palestine-dst3.patch
+12-syria-dst.patch
+13-jordan-dst.patch
+14-fiji-dst.patch
+15-mexico-dst.patch
