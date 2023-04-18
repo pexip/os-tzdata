@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tzdata-2013-he\n"
 "Report-Msgid-Bugs-To: tzdata@packages.debian.org\n"
-"POT-Creation-Date: 2020-10-10 22:38+0200\n"
+"POT-Creation-Date: 2023-03-24 22:41+0100\n"
 "PO-Revision-Date: 2013-12-24 23:13+0100\n"
 "Last-Translator: Omer Zak <w1@zak.co.il>\n"
 "Language-Team: Hebrew <debian-hebrew-common@lists.alioth.debian.org>\n"
@@ -855,6 +855,13 @@ msgstr "שיקגו"
 #: ../tzdata.templates:3001
 msgid "Chihuahua"
 msgstr "צ'יהואהואה"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:3001
+msgid "Ciudad_Juarez"
+msgstr "סיודאד חוארס"
 
 #. Type: select
 #. Choices
