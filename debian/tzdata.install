@@ -1,4 +1,3 @@
-debian/tzconfig /usr/sbin
 iso3166.tab usr/share/zoneinfo/
 leap-seconds.list usr/share/zoneinfo/
 leapseconds usr/share/zoneinfo/

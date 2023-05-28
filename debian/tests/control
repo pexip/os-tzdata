@@ -1,0 +1,12 @@
+Tests: debconf
+Depends: python3, tzdata
+Restrictions: allow-stderr needs-root
+
+Tests: python
+Depends: python3 (>= 3.9), tzdata
+Restrictions: allow-stderr
+
+Test-command: debian/test_timezone_conversions -d /var/lib/dpkg/info/
+Depends: python3, python3-debian, tzdata
+Restrictions: allow-stderr superficial
+Features: test-name=test_timezone_conversions

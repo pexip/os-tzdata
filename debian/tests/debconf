@@ -1,0 +1,189 @@
+#!/usr/bin/python3
+
+# Author: Benjamin Drung <bdrung@ubuntu.com>
+
+"""Test debconf configuration."""
+
+import contextlib
+import os
+import pathlib
+import re
+import subprocess
+import sys
+import typing
+import unittest
+
+
+class TestDebconf(unittest.TestCase):
+    """Test debconf configuration."""
+
+    etc_localtime = pathlib.Path("/etc/localtime")
+    etc_timezone = pathlib.Path("/etc/timezone")
+
+    def setUp(self) -> None:
+        self.orig_timezone = self._get_timezone()
+        with contextlib.suppress(FileNotFoundError):
+            self.etc_timezone.unlink()
+
+    def tearDown(self) -> None:
+        self._set_timezone(self.orig_timezone)
+
+    @staticmethod
+    def _call_debconf_set_selections(selections: str) -> None:
+        subprocess.run(
+            ["debconf-set-selections"], check=True, encoding="utf-8", input=selections
+        )
+
+    @staticmethod
+    def _call_dpkg_reconfigure() -> None:
+        subprocess.run(
+            ["dpkg-reconfigure", "--frontend", "noninteractive", "tzdata"], check=True
+        )
+
+    @staticmethod
+    def _get_debconf_selections() -> dict[str, str]:
+        debconf_show = subprocess.run(
+            ["debconf-show", "tzdata"], capture_output=True, check=True, text=True
+        )
+        debconf_re = re.compile("^[ *] ([^:]+): *(.*)$", flags=re.MULTILINE)
+        return dict(debconf_re.findall(debconf_show.stdout))
+
+    def _get_selection(self) -> str:
+        selections = self._get_debconf_selections()
+        area = selections["tzdata/Areas"]
+        zone = selections[f"tzdata/Zones/{area}"]
+        return f"{area}/{zone}"
+
+    def _get_timezone(self) -> str:
+        absolute_path = self.etc_localtime.parent / self.etc_localtime.readlink()
+        timezone = pathlib.Path(os.path.normpath(absolute_path))
+        return str(timezone.relative_to("/usr/share/zoneinfo"))
+
+    def _set_timezone(self, timezone: typing.Union[pathlib.Path, str]) -> None:
+        with contextlib.suppress(FileNotFoundError):
+            self.etc_localtime.unlink()
+        if isinstance(timezone, str):
+            target = pathlib.Path("/usr/share/zoneinfo") / timezone
+        else:
+            target = timezone
+        self.etc_localtime.symlink_to(target)
+
+    @staticmethod
+    def _reset_debconf() -> None:
+        subprocess.run(
+            ["debconf-communicate", "tzdata"],
+            check=True,
+            encoding="utf-8",
+            env={"DEBIAN_FRONTEND": "noninteractive"},
+            input="RESET tzdata/Areas\nRESET tzdata/Zones/Etc\n",
+            stdout=subprocess.DEVNULL,
+        )
+
+    def test_broken_symlink(self) -> None:
+        """Test pointing /etc/localtime to an invalid location."""
+        self._set_timezone(pathlib.Path("/bin/sh"))
+        self._reset_debconf()
+        self._call_dpkg_reconfigure()
+        self.assertEqual(self._get_timezone(), "Etc/UTC")
+        self.assertEqual(self._get_selection(), "Etc/UTC")
+
+    def test_broken_symlink_but_debconf_preseed(self) -> None:
+        """Test broken /etc/localtime but existing debconf answers."""
+        self._set_timezone(pathlib.Path("/bin/sh"))
+        self._call_debconf_set_selections(
+            "tzdata tzdata/Areas select Pacific\n"
+            "tzdata tzdata/Zones/Pacific select Yap\n"
+        )
+        self._call_dpkg_reconfigure()
+        self.assertEqual(self._get_timezone(), "Pacific/Yap")
+        self.assertEqual(self._get_selection(), "Pacific/Yap")
+
+    def test_etc_localtime_precedes_debconf_preseed(self) -> None:
+        """Test dpkg-reconfigure uses /etc/localtime over preseed."""
+        self._set_timezone("Asia/Jerusalem")
+        self._call_debconf_set_selections(
+            "tzdata tzdata/Areas select Australia\n"
+            "tzdata tzdata/Zones/Australia select Sydney\n"
+        )
+        self._call_dpkg_reconfigure()
+        self.assertEqual(self._get_timezone(), "Asia/Jerusalem")
+        self.assertEqual(self._get_selection(), "Asia/Jerusalem")
+
+    def test_default_to_utc(self) -> None:
+        """Test dpkg-reconfigure defaults to Etc/UTC."""
+        self.etc_localtime.unlink()
+        self._reset_debconf()
+        self._call_dpkg_reconfigure()
+        self.assertEqual(self._get_timezone(), "Etc/UTC")
+        self.assertEqual(self._get_selection(), "Etc/UTC")
+
+    def test_reconfigure_creates_etc_timezone(self) -> None:
+        """Test dpkg-reconfigure does create /etc/timezone."""
+        self._set_timezone("America/New_York")
+        self._call_dpkg_reconfigure()
+        self.assertEqual(self._get_timezone(), "America/New_York")
+        self.assertTrue(self.etc_timezone.exists())
+        self.assertEqual(self._get_selection(), "America/New_York")
+
+    def test_reconfigure_updates_etc_timezone(self) -> None:
+        """Test dpkg-reconfigure updates existing /etc/timezone."""
+        self._set_timezone("Europe/Oslo")
+        self.etc_timezone.write_bytes(b"")
+        self._call_dpkg_reconfigure()
+        self.assertEqual(self._get_timezone(), "Europe/Oslo")
+        self.assertEqual(self.etc_timezone.read_text(encoding="utf-8"), "Europe/Oslo\n")
+        self.assertEqual(self._get_selection(), "Europe/Oslo")
+
+    def test_reconfigure_fallback_to_etc_timezone(self) -> None:
+        """Test dpkg-reconfigure reads /etc/timezone for missing /etc/localtime."""
+        self.etc_localtime.unlink()
+        self.etc_timezone.write_text("Europe/Kiev\n", encoding="utf-8")
+        self._call_dpkg_reconfigure()
+        self.assertEqual(self._get_timezone(), "Europe/Kyiv")
+        self.assertEqual(self.etc_timezone.read_text(encoding="utf-8"), "Europe/Kyiv\n")
+        self.assertEqual(self._get_selection(), "Europe/Kyiv")
+
+    def test_reconfigure_symlinked_timezone(self) -> None:
+        """Test dpkg-reconfigure for symlinked timezone."""
+        self._set_timezone("Arctic/Longyearbyen")
+        self._call_dpkg_reconfigure()
+        self.assertEqual(self._get_timezone(), "Arctic/Longyearbyen")
+        self.assertEqual(self._get_selection(), "Arctic/Longyearbyen")
+
+    def test_relative_symlink(self) -> None:
+        """Test relative symlink /etc/localtime."""
+        timezone = pathlib.Path("../usr/share/zoneinfo/Europe/Berlin")
+        self._set_timezone(timezone)
+        self._call_dpkg_reconfigure()
+        self.assertEqual(self._get_timezone(), "Europe/Berlin")
+        self.assertEqual(self.etc_localtime.readlink(), timezone)
+        self.assertEqual(self._get_selection(), "Europe/Berlin")
+
+    def test_update_obsolete_timezone(self) -> None:
+        """Test updating obsolete timezone to current one."""
+        self._set_timezone("Mideast/Riyadh88")
+        self._call_dpkg_reconfigure()
+        self.assertEqual(self._get_timezone(), "Asia/Riyadh")
+        self.assertEqual(self._get_selection(), "Asia/Riyadh")
+
+    def test_preesed(self) -> None:
+        """Test preseeding answers with non-existing /etc/localtime."""
+        self.etc_localtime.unlink()
+        self._call_debconf_set_selections(
+            "tzdata tzdata/Areas select Europe\n"
+            "tzdata tzdata/Zones/Europe select Berlin\n"
+        )
+        self._call_dpkg_reconfigure()
+        self.assertEqual(self._get_timezone(), "Europe/Berlin")
+        self.assertEqual(self._get_selection(), "Europe/Berlin")
+
+
+def main() -> None:
+    """Run unit tests in verbose mode."""
+    argv = sys.argv.copy()
+    argv.insert(1, "-v")
+    unittest.main(argv=argv)
+
+
+if __name__ == "__main__":
+    main()

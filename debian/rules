@@ -4,81 +4,42 @@ export LC_ALL=C
 
 TZGEN := $(CURDIR)/tzgen
 
-TEMPLATES_FILE := $(CURDIR)/debian/tzdata.templates
-TEMPLATES_AREAS := Africa \
-                   America \
-		   Antarctica \
-		   Australia \
-		   Arctic \
-		   Asia \
-		   Atlantic \
-		   Europe \
-		   Indian \
-		   Pacific \
-		   US \
-		   Etc
-
 %:
 	dh $@
 
 override_dh_auto_build-indep:
 	# Generate a tzdata.zi file
-	$(MAKE) AWK=gawk BACKWARD="backward" VERSION_DEPS= tzdata.zi
+	$(MAKE) AWK=gawk BACKWARD="backward" PACKRATDATA=backzone PACKRATLIST=zone.tab VERSION_DEPS= tzdata.zi
 
 	# Generate the leapseconds file
-	$(MAKE) AWK=gawk leapseconds
+	$(MAKE) AWK=gawk PACKRATDATA=backzone PACKRATLIST=zone.tab leapseconds
 
 	# Build the timezone data
 	/usr/sbin/zic -d $(TZGEN) -L /dev/null tzdata.zi ; \
-	/usr/sbin/zic -d $(TZGEN)/posix -L /dev/null tzdata.zi ; \
+	mkdir "$(TZGEN)/posix"; \
+	find "$(TZGEN)" -mindepth 1 -maxdepth 1 ! -name posix -printf "%P\n" | while read -r tz; do \
+		ln -sr "$(TZGEN)/$$tz" "$(TZGEN)/posix/$$tz"; \
+	done; \
 	/usr/sbin/zic -d $(TZGEN)/right -L leapseconds tzdata.zi ; \
 
 	# Replace hardlinks by symlinks
 	grep '^L ' $(CURDIR)/tzdata.zi | while read L target name ; do \
-		ln -sf $(TZGEN)/$$target $(TZGEN)/$$name ; \
-		ln -sf $(TZGEN)/posix/$$target $(TZGEN)/posix/$$name ; \
-		ln -sf $(TZGEN)/right/$$target $(TZGEN)/right/$$name ; \
+		ln -srf $(TZGEN)/$$target $(TZGEN)/$$name ; \
+		ln -srf $(TZGEN)/posix/$$target $(TZGEN)/posix/$$name ; \
+		ln -srf $(TZGEN)/right/$$target $(TZGEN)/right/$$name ; \
 	done
-	symlinks -r -s -c $(TZGEN)
 
 	# Generate a posixrules file
 	ln -s America/New_York $(TZGEN)/posixrules
 
-	# Generate the templates file
-	( echo "Template: tzdata/Areas" ; \
-	echo "Type: select" ; \
-	echo "# Note to translators:" ; \
-	echo "# - \"Etc\" will present users with a list" ; \
-	echo "#    of \"GMT+xx\" or \"GMT-xx\" timezones" ; \
-	echo -n "__Choices: " ; \
-	echo "$(TEMPLATES_AREAS)" | sed -e 's# #, #g' -e 's#, $$##' ; \
-	echo "_Description: Geographic area:" ; \
-	echo " Please select the geographic area in which you live. Subsequent" ; \
-	echo " configuration questions will narrow this down by presenting a list of" ; \
-	echo " cities, representing the time zones in which they are located." ; \
-	echo ; \
-	for i in $(TEMPLATES_AREAS) ; do \
-	    echo "Template: tzdata/Zones/$$i" ; \
-	    echo "Type: select" ; \
-	    echo "# Translators: do not translate underscores. You can use spaces instead." ; \
-	    echo "#flag:partial" ; \
-	    if [ "$$i" = "Etc" ] ; then \
-		    echo -n "Choices: " ; \
-	    else \
-		    echo -n "__Choices: " ; \
-	    fi ; \
-	    cd $(CURDIR)/tzgen/$$i ; \
-	    find . -maxdepth 2 -type f -o -type l | sed -e 's#^\./##' | \
-		egrep -v '^(Ashkhabad|Chungking|Dacca|Macao|Thimbu|Ulan_Bator|Faeroe|ACT|LHI|NSW|North|Queensland|South|Tasmania|Victoria|West|Argentina/ComodRivadavia|Buenos_Aires|Catamarca|Cordoba|Jujuy|Mendoza|Rosario|Louisville|Fort_Wayne|Indianapolis|Knox_IN|East-Indiana|East-Starke|Asmera|South_Pole|Saigon|Calcutta|Katmandu|Pacific-New)$$' | \
-		sort -n | tr '\n' ',' | sed -e 's#,#, #g' -e 's#, $$#\n#' ; \
-	    echo "_Description: Time zone:" ; \
-	    echo " Please select the city or region corresponding to your time zone." ; \
-	    echo ; \
-	done ) > $(TEMPLATES_FILE)
+	debian/generate_debconf_templates -d "$(TZGEN)" > debian/tzdata.templates
 	debconf-updatepo
 
+# The upstream tests are related to the sources. Just skip it.
 override_dh_auto_test:
-	# The upstream tests are related to the sources. Just skip it.
+	debian/test_timezone_conversions -z "$(TZGEN)"
+	PYTHONTZPATH="$(TZGEN)" debian/tests/python
+	debian/check_translations debian/po/*.po
 
 override_dh_auto_install:
 	# Nothing to do.

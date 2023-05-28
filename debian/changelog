@@ -1,98 +1,351 @@
-tzdata (2021a-1+deb11u10) bullseye; urgency=medium
+tzdata (2023c-5) unstable; urgency=medium
 
-  * Cherry-pick patch from upstream:
-    - 24-lebanon-dst2.patch: Revert the Lebanon DST change introduced in
-      2023b and backported to 2021a-1+deb11u9.
+  * Update German debconf translation.
+    Thanks to Helge Kreutzmann <debian@helgefjell.de> (Closes: #1036464)
 
- -- Aurelien Jarno <aurel32@debian.org>  Tue, 18 Apr 2023 22:03:16 +0200
+ -- Benjamin Drung <bdrung@debian.org>  Sun, 28 May 2023 21:54:34 +0200
 
-tzdata (2021a-1+deb11u9) bullseye; urgency=medium
+tzdata (2023c-4) unstable; urgency=medium
 
-  * Cherry-pick patches from upstream:
-    - 16-greenland-dst.patch: Much of Greenland stops changing clocks after
-      March 2023.
-    - 17-mexico-dst-chihuahua.patch: The northern edge of Chihuahua changes to
-      US timekeeping.
-    - 18-no-leap-second-2023-06-30.patch: update leap-seconds.list, new
-      expiration date on 28 December 2023.
-    - 19-greenland-dst2.patch: Much of Greenland still uses DST from 2024 on.
-    - 20-egypt-dst.patch: Egypt now uses DST again, from April through
-      October.
-    - 21-morroco-dst.patch: This year Morocco springs forward April 23, not
-      April 30.
-    - 22-palestine-dst4.patch: Palestine delays the start of DST this year.
-    - 23-lebanon-dst.patch: Lebanon delays the start of DST this year.
-  * Import translations of Ciudad_Juarez from sid where available.
+  * Sort timezones naturally in debconf
+  * Add explanation for plus/minus used by Etc/GMT timezones
+    (Closes: #540305, LP: #1325949)
+  * Build tzdata with PACKRATLIST=zone.tab. In combination with
+    PACKRATDATA=backzone (which is used since 2022g-3), time zones that differ
+    pre-1970 and had been resurrected will not incur changes to data from 1970
+    on. This also removes Asia/Hanoi again. (LP: #2017999)
+  * Update Croatian debconf translation. Thanks to Tomislav Krznar.
 
- -- Aurelien Jarno <aurel32@debian.org>  Fri, 24 Mar 2023 23:41:33 +0100
+ -- Benjamin Drung <bdrung@debian.org>  Wed, 10 May 2023 00:00:40 +0200
 
-tzdata (2021a-1+deb11u8) bullseye; urgency=medium
+tzdata (2023c-3) unstable; urgency=medium
 
-  * Cherry-pick patches from upstream:
-    - 14-fiji-dst.patch: Fiji no longer observes DST.
-    - 15-mexico-dst.patch: Mexico will no longer observe DST except near the
-      US border. Chihuahua moves to year-round -06 on 2022-10-30.
+  * test_timezone_conversions: Print all failures before failing
+  * Add Romanian debconf translation. Thanks to Remus-Gabriel Chelu
+    (Closes: #1034094)
+  * Add Language metadata to all debconf translation files
+  * Convert Pacific/Ponape to Pacific/Pohnpei on upgrade
+  * Convert Asia/Ujung_Pandang to Asia/Makassar on upgrade
+  * Convert Pacific/Truk to Pacific/Chuuk on upgrade
+  * Fix or drop wrong translations
+  * Check debconf translation files for inconsistencies
+  * Fix German translation of Christmas and Easter Island
 
- -- Aurelien Jarno <aurel32@debian.org>  Sat, 29 Oct 2022 14:12:56 +0200
+ -- Benjamin Drung <bdrung@debian.org>  Thu, 13 Apr 2023 13:54:30 +0200
 
-tzdata (2021a-1+deb11u7) bullseye; urgency=medium
+tzdata (2023c-2) unstable; urgency=medium
 
-  * Cherry-pick patches from upstream:
-    - 12-syria-dst.patch: Syria is abandoning the DST regime and is
-      changing to permanent +03, so it will not fall back from +03 to
-      +02 on 2022-10-28.
-    - 13-jordan-dst.patch: Jordan is abandoning the DST regime and are
-      changing to permanent +03, so it will not fall back from +03 to
-      +02 on 2022-10-28.
+  * Add autopkgtest test case for pre-1970 timestamps
+  * generate_debconf_templates: Be explicit about including or excluding
+    symlinks (to catch cases like renamed timezones)
+  * test_timezone_conversions: Also check for missing conversions (timezones
+    that cannot be selected in debconf should be converted on upgrade)
 
- -- Aurelien Jarno <aurel32@debian.org>  Sat, 15 Oct 2022 11:46:50 +0200
+ -- Benjamin Drung <bdrung@debian.org>  Thu, 30 Mar 2023 01:14:49 +0200
 
-tzdata (2021a-1+deb11u6) bullseye; urgency=medium
+tzdata (2023c-1) unstable; urgency=medium
 
-  * Cherry-pick patches from upstream:
-    - 10-no-leap-second-2022-12-31.patch: update leap-seconds.list, new
-      expiration date on 28 June 2023.
-    - 11-palestine-dst3.patch: Palestine transitions are now Saturdays at
-      02:00. This means 2022 falls back 10-29 at 02:00, not 10-28 at 01:00.
+  * New upstream version (LP: #2012599):
+    - Revert all changes made in 2023b to model this week's daylight saving
+      chaos in Lebanon.
 
- -- Aurelien Jarno <aurel32@debian.org>  Sat, 01 Oct 2022 23:34:39 +0200
+ -- Benjamin Drung <bdrung@debian.org>  Wed, 29 Mar 2023 11:37:18 +0200
 
-tzdata (2021a-1+deb11u5) bullseye; urgency=medium
+tzdata (2023b-1) unstable; urgency=medium
 
-  * Cherry-pick patches from upstream:
+  * New upstream version (LP: #2012599):
+    - Lebanon delays the start of DST this year.
+
+ -- Benjamin Drung <bdrung@debian.org>  Fri, 24 Mar 2023 12:23:17 +0100
+
+tzdata (2023a-1) unstable; urgency=medium
+
+  * New upstream version (LP: #2012599):
+    - Egypt now uses DST again, from April through October.
+    - This year Morocco springs forward April 23, not April 30.
+    - Palestine delays the start of DST this year.
+    - Much of Greenland still uses DST from 2024 on.
+  * Add autopkgtest test case for 2023a release
+  * Update Dutch debconf translation. (Closes: #1032537)
+    Thanks to Frans Spiesschaert <Frans.Spiesschaert@yucom.be>
+
+ -- Benjamin Drung <bdrung@debian.org>  Thu, 23 Mar 2023 11:53:35 +0100
+
+tzdata (2022g-7) unstable; urgency=medium
+
+  * Create /etc/timezone with default SELinux context (Closes: #1031514)
+
+ -- Benjamin Drung <bdrung@debian.org>  Fri, 17 Feb 2023 23:55:21 +0100
+
+tzdata (2022g-6) unstable; urgency=medium
+
+  * Restore generating /etc/timezone again. The removal of /etc/timezone
+    will be done in Debian 13 "Trixie". (Closes: #1031376, #1031395)
+  * Update Turkish debconf translation.
+    Thanks to Atila KOÇ <koc@artielektronik.com.tr> (Closes: #1031211)
+
+ -- Benjamin Drung <bdrung@debian.org>  Thu, 16 Feb 2023 21:54:13 +0100
+
+tzdata (2022g-5) unstable; urgency=medium
+
+  * Fix environment variable name to PYTHONTZPATH for Python test
+    (Closes: #1031028)
+  * Skip test_localtime during package build
+
+ -- Benjamin Drung <bdrung@debian.org>  Fri, 10 Feb 2023 17:47:26 +0100
+
+tzdata (2022g-4) unstable; urgency=medium
+
+  * Fix configuration failure with relative /etc/localtime symlink
+    (Closes: #1030742)
+  * Fix exit status 10 for invalid /etc/localtime symlinks
+
+ -- Benjamin Drung <bdrung@debian.org>  Tue, 07 Feb 2023 17:53:35 +0100
+
+tzdata (2022g-3) unstable; urgency=medium
+
+  * Update Brazilian Portuguese debconf translation.  (Closes: #1029004)
+    Thanks to Adriano Rafael Gomes <adrianorg@debian.org>
+  * Update Dutch debconf translation. (Closes: #1029019)
+    Thanks to Frans Spiesschaert <Frans.Spiesschaert@yucom.be>
+  * Update Turkish debconf translation. (Closes: #1029492)
+    Thanks to Atila KOÇ <koc@artielektronik.com.tr>
+  * Drop Asia/Rangoon from debconf options (was renamed to Asia/Yangon)
+  * Update conversion targets to America/Indiana/Indianapolis
+  * Remove incorrect fuzzy debconf translations
+  * Test convert_timezone for consistency
+  * Build timezones that differ pre-1970 (LP: #2003797)
+  * Update English and German debconf translations
+  * Test timezones using Python's zoneinfo module
+  * Stop creating /etc/timezone and remove it on upgrades as a one-time action,
+    but keep updating it in case users restore it (Closes: #822733)
+  * Remove /etc/timezone on purge (LP: #1683595)
+  * Test debconf configuration with autopkgtest
+  * d/tzdata.config: Group matches by target timzones
+
+ -- Benjamin Drung <bdrung@debian.org>  Tue, 07 Feb 2023 00:31:33 +0100
+
+tzdata (2022g-2) unstable; urgency=medium
+
+  [ Benjamin Drung ]
+  * Update Czech debconf translation.
+    Thanks to Miroslav Kuře <kurem@upcase.inf.upol.cz> (Closes: #1027862)
+  * Update Korean debconf translation.
+    Thanks to Changwoo Ryu <cwryu@debian.org> (Closes: #1027983)
+  * d/tzdata.config: Update Mideast/Riyadh8[789] to Asia/Riyadh
+  * Address shellcheck complaints in postinst and tzdata.config
+  * d/tzdata.config: Rename Pacific/Enderbury to Pacific/Kanton
+  * Replace obsolete two-level American timezones by three-level timezones
+  * Translate area "America" as "Americas" in English
+    (Closes: #508118, LP: #599466)
+
+  [ Aurelien Jarno ]
+  * Update Spanish debconf translation.
+    Thanks to Jonatan Porras <jonatanpc8@gmail.com>
+  * Update Polish debconf translation.
+    Thanks to Łukasz Dulny <BartekChom@poczta.onet.pl>
+  * Update French debconf translation.
+    Thanks to Baptiste Jammet <baptiste@mailoo.org>
+  * Update Hebrew debconf translation.
+    Thanks to Omer Zak <w1@zak.co.il>
+  * Update Swedish debconf translation.
+    Thanks to Luna Jernberg <droidbittin@gmail.com>
+  * Drop wrong conversion of the Pacific/Enderbury timezone
+
+  [ Benjamin Drung ]
+  * d/rules: Exclude obsolete Uzhgorod and Zaporozhye from debconf
+  * Generate debconf templates with Python
+  * Drop obsolete tzconfig command (use "dpkg-reconfigure tzdata" instead)
+  * Do not update US/* timezones to their America/* counterparts
+    (Closes: #688318, LP: #772024)
+  * Fix German translation of "Indian" to "Indischer Ozean"
+
+ -- Benjamin Drung <bdrung@debian.org>  Tue, 10 Jan 2023 23:18:28 +0100
+
+tzdata (2022g-1) unstable; urgency=medium
+
+  * New upstream version:
+    - The northern edge of Chihuahua changes to US timekeeping.
+    - Much of Greenland stops changing clocks after March 2023.
+    - Fix some pre-1996 timestamps in northern Canada.
+  * debian/tzdata.config: convert Europe/Uzhgorod and Europe/Zaporozhye
+    into Europe/Kyiv.
+  * debian/tzdata.templates: Remove Uzhgorod and Zaporozhye, add Ciudad_Juarez
+  * debian/watch: Switch from failing ftp to https
+  * Add myself to Uploaders
+  * Replace timezone files in posix directory by symlinks (Closes: #1010477)
+  * Convert d/copyright to machine-readable format. Thanks to Bastian Germann
+    (Closes: #1023598)
+  * Bump Standards-Version to 4.6.2
+  * Add debian/upstream/metadata
+
+ -- Benjamin Drung <bdrung@debian.org>  Mon, 02 Jan 2023 15:27:07 +0100
+
+tzdata (2022f-1) unstable; urgency=high
+
+  * New upstream version:
+    - Mexico will no longer observe DST except near the US border.
+      Chihuahua moves to year-round -06 on 2022-10-30.
+    - Fiji no longer observes DST.
+  * Set urgency to high as the first change happens tomorrow.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 29 Oct 2022 12:19:28 +0200
+
+tzdata (2022e-1) unstable; urgency=medium
+
+  * New upstream version:
+    - Jordan and Syria are abandoning the DST regime and are changing to
+      permanent +03, so they will not fall back from +03 to +02 on
+      2022-10-28.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Fri, 14 Oct 2022 21:54:44 +0200
+
+tzdata (2022d-1) unstable; urgency=medium
+
+  * New upstream version:
+    - Palestine transitions are now Saturdays at 02:00. This means 2022 falls
+      back 10-29 at 02:00, not 10-28 at 01:00.
+    - Simplify three Ukraine zones into one.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 26 Sep 2022 23:14:01 +0200
+
+tzdata (2022c-1) unstable; urgency=medium
+
+  * New upstream version, no changes to the timezones.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 16 Aug 2022 11:14:49 +0200
+
+tzdata (2022b-1) unstable; urgency=medium
+
+  [ Aurelien Jarno ]
+  * New upstream version:
+    - Chile's 2022 DST start is delayed from September 4 to September 11.
     - Iran plans to stop observing DST permanently, after it falls back
       on 2022-09-21.
-    - Chile's 2022 DST start is delayed from September 4 to September 11.
+  * debian/tzdata.config: convert Europe/Kiev into Europe/Kyiv.
+  * debian/tzdata.templates, debian/po/*: update templates and translation
+    following the above change.
+  * Bump Standards-Version to 4.6.1 (no changes).
 
- -- Aurelien Jarno <aurel32@debian.org>  Sun, 14 Aug 2022 16:27:14 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Thu, 11 Aug 2022 15:29:52 +0200
 
-tzdata (2021a-1+deb11u4) bullseye; urgency=medium
+tzdata (2022a-1) unstable; urgency=high
 
-  * Cherry-pick patches from upstream:
-    - 07-no-leap-second-2022-06-30.patch: update leap-seconds.list, new
-      expiration date on 28 December 2022.  Closes: #1012191.
+  [ Aurelien Jarno ]
+  * New upstream version:
+    - Palestine will spring forward on 2022-03-27, not -03-26.
+  * Set urgency to high as the Palestine DST change is in 4 days.
+  * debian/tzdata.config: do not try to get a value from debconf if it hasn't
+    been seen yet.  Closes: #999465.
+  * Update English debconf translation.
 
- -- Aurelien Jarno <aurel32@debian.org>  Fri, 10 Jun 2022 19:59:11 +0200
+  [ Johannes Schauer Marin Rodrigues ]
+  * Add support for support DPKG_ROOT.  Closes: #1007756.
 
-tzdata (2021a-1+deb11u3) bullseye; urgency=medium
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 22 Mar 2022 20:49:04 +0100
 
-  * Cherry-pick patches from tzdata-2022a:
-    - 06-palestine-dst2.patch: Palestine will spring forward on 2022-03-27,
-      not -03-26..
+tzdata (2021e-1) unstable; urgency=medium
 
- -- Aurelien Jarno <aurel32@debian.org>  Tue, 22 Mar 2022 22:07:41 +0100
+  * New upstream version:
+    - Palestine will fall back 2021-10-29 (not 2021-10-30) at 01:00.
 
-tzdata (2021a-1+deb11u2) bullseye; urgency=medium
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 25 Oct 2021 12:04:40 +0200
 
-  * Cherry-pick patches from tzdata-2021d and tzdata-2021e:
-    - 04-fiji-dst.patch: Fiji suspends DST for the 2021/2022 season.
-    - 05-palestine-dst.patch: Palestine will fall back 2021-10-29 (not
-      2021-10-30) at 01:00.
+tzdata (2021d-1) unstable; urgency=medium
 
- -- Aurelien Jarno <aurel32@debian.org>  Mon, 25 Oct 2021 19:14:46 +0200
+  [ Aurelien Jarno ]
+  * New upstream version:
+    - Fiji suspends DST for the 2021/2022 season.
+  * Update English debconf translation.
 
-tzdata (2021a-1+deb11u1) bullseye; urgency=medium
+  [ Łukasz Dulny ]
+  * Update Polish debconf translation.
 
+ -- Aurelien Jarno <aurel32@debian.org>  Sun, 17 Oct 2021 23:52:06 +0200
+
+tzdata (2021c-3) unstable; urgency=medium
+
+  [ Martin Bagge ]
+  * Update Swedish debconf translation.  Closes: #995697.
+
+  [ Changwoo Ryu ]
+  * Add Korean debconf translation.  Closes: #995701.
+
+  [ Frans Spiesschaert ]
+  * Update Dutch debconf translation.  Closes: #995998.
+
+  [ Agustí Grau ]
+  * Update Catalan debconf translation.
+
+  [ Adriano Rafael Gomes ]
+  * Update Portuguese debconf translation.  Closes: #996264.
+
+  [ Aurelien Jarno ]
+  * Replace underscore by space in the following debconf translations: be, fr,
+    gu, hr, hu, id, ku, lt, ml, pt, pt_BR, sk, sq, vi, wo.
+
+  [ victory ]
+  * Update Japanese debconf translation.
+
+  [ Jean-Pierre Giraud ]
+  * Update French debconf translation.  Closes: #996163.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Fri, 15 Oct 2021 22:00:58 +0200
+
+tzdata (2021c-2) unstable; urgency=medium
+
+  [ Holger Wansing ]
+  * Update German debconf translation.
+
+  [ Jonatan Porras ]
+  * Update Spanish debconf translation.
+
+  [ Bolesław Śliwicki ]
+  * Update Polish debconf translation.
+
+  [ Parodper ]
+  * Update Galician debconf translation.
+
+  [ Matěj Pokorný ]
+  * Update Czech debconf translation.
+
+  [ Hace İbrahim Özbal ]
+  * Update Turkish debconf translation.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Thu, 07 Oct 2021 23:25:15 +0200
+
+tzdata (2021c-1) unstable; urgency=medium
+
+  * New upstream version.
+    - Drop 01-fix-jan-mayen-typo.patch.
+  * Bump debhelper compatibility to 13.
+  * Bump Standards-Version to 4.6.0 (no changes).
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 02 Oct 2021 19:00:21 +0200
+
+tzdata (2021b-1) unstable; urgency=low
+
+  * New upstream version.
+    - Drop 01-no-leap-second-2021-12-31.patch.
+    - Drop 02-samoa-dst.patch.
+    - Drop 03-jordan-dst.patch.
+  * Cherry pick patch from upstream:
+    - 01-fix-jan-mayen-typo.patch: fix for Atlantic/Jan_Mayen from upstream.
+  * Update debian/upstream/signing-key.asc.
+  * Handle Pacific/Enderbury to Pacific/Kanton renaming:
+    - Add an entry to tzdata.config
+    - Do not translate Pacific/Enderbury.
+    - Update debconf templates and translations.
+  * Set urgency to low as this new upstream version merged many pre-1970
+    timezones, and this needs more testing.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Wed, 29 Sep 2021 01:02:50 +0200
+
+tzdata (2021a-2) unstable; urgency=critical
+
+  * Set urgency to critical as the Samoa DST change is already effective.
+  * Update Provides to tzdata-bookworm.
+  * debian/control: remove Adam Conrad from Uploaders. RIP.  Closes: #986954.
   * Cherry-pick patches from tzdata-2021b until the upstream situation gets
     less confused:
     - 01-no-leap-second-2021-12-31.patch: No leap second on 2021-12-31 as per
@@ -100,7 +353,7 @@ tzdata (2021a-1+deb11u1) bullseye; urgency=medium
     - 02-samoa-dst.patch: Samoa no longer observes DST.
     - 03-jordan-dst.patch: Jordan now starts DST on February's last Thursday.
 
- -- Aurelien Jarno <aurel32@debian.org>  Mon, 27 Sep 2021 18:27:10 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 27 Sep 2021 18:20:02 +0200
 
 tzdata (2021a-1) unstable; urgency=medium
 
@@ -171,7 +424,7 @@ tzdata (2020a-1) unstable; urgency=medium
 
 tzdata (2019c-3) unstable; urgency=medium
 
-  * Build the timezone data from tzdata.zi. 
+  * Build the timezone data from tzdata.zi.
   * Install leapseconds file /usr/share/zoneinfo.
   * Bump Standards-Version to 4.4.1 (no changes).
 
