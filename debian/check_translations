@@ -1,0 +1,66 @@
+#!/usr/bin/python3
+
+# Author: Benjamin Drung <bdrung@ubuntu.com>
+
+"""Check translation .po files for inconsistencies like identical translations."""
+
+
+import argparse
+import collections
+import logging
+import os
+import sys
+
+import polib
+
+LOG_FORMAT = "%(name)s %(levelname)s: %(message)s"
+__script_name__ = os.path.basename(sys.argv[0]) if __name__ == "__main__" else __name__
+
+
+def check_duplicate_translations(po_file: polib.POFile) -> int:
+    """Check if different msgids have the identical translation."""
+    msgstr_to_msgids = collections.defaultdict(set)
+    for entry in po_file:
+        if entry.msgstr == "":
+            continue
+        msgstr_to_msgids[entry.msgstr].add(entry.msgid)
+
+    # Drop single translations
+    duplicate_translations = {
+        msgstr: msgids for msgstr, msgids in msgstr_to_msgids.items() if len(msgids) > 1
+    }
+    if not duplicate_translations:
+        return 0
+
+    logger = logging.getLogger(__script_name__)
+    for msgstr, msgids in duplicate_translations.items():
+        logger.warning(
+            "Following IDs have the identical '%s' translation '%s': %s",
+            po_file.metadata["Language"],
+            msgstr,
+            ", ".join(sorted(msgids)),
+        )
+    return 1
+
+
+def check_translation(po_filename: str) -> int:
+    """Check translation .po file for issues."""
+    po_file = polib.pofile(po_filename)
+    return check_duplicate_translations(po_file)
+
+
+def main() -> int:
+    """Check translation .po files for inconsistencies like identical translations."""
+    parser = argparse.ArgumentParser()
+    parser.add_argument("po_file", nargs="*")
+    args = parser.parse_args()
+    logging.basicConfig(format=LOG_FORMAT, level=logging.INFO)
+
+    failures = 0
+    for po_filename in args.po_file:
+        failures += check_translation(po_filename)
+    return failures
+
+
+if __name__ == "__main__":
+    sys.exit(main())
