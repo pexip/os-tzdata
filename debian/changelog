@@ -1,3 +1,10 @@
+tzdata (2023c-5+deb12u1) bookworm; urgency=medium
+
+  * Update leap-seconds.list from upstream
+  * Remove leapseconds during clean target
+
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 28 Nov 2023 20:21:17 +0100
+
 tzdata (2023c-5) unstable; urgency=medium
 
   * Update German debconf translation.
