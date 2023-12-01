@@ -1,19 +1,12 @@
 Source: tzdata
 Section: localization
 Priority: required
-Build-Depends: debhelper-compat (= 13)
-Build-Depends-Indep: gawk,
-                     po-debconf,
-                     python3 (>= 3.9),
-                     python3-debian,
-                     python3-natsort,
-                     python3-polib
+Build-Depends: debhelper-compat (= 12)
+Build-Depends-Indep: gawk, po-debconf, symlinks
 Rules-Requires-Root: no
 Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
-Uploaders: Clint Adams <clint@debian.org>,
-           Aurelien Jarno <aurel32@debian.org>,
-           Benjamin Drung <bdrung@debian.org>
-Standards-Version: 4.6.2
+Uploaders: Clint Adams <clint@debian.org>, Aurelien Jarno <aurel32@debian.org>, Adam Conrad <adconrad@0c3.net>
+Standards-Version: 4.5.0
 Homepage: https://www.iana.org/time-zones
 Vcs-Git: https://salsa.debian.org/glibc-team/tzdata.git
 Vcs-Browser: https://salsa.debian.org/glibc-team/tzdata
@@ -21,8 +14,8 @@ Vcs-Browser: https://salsa.debian.org/glibc-team/tzdata
 Package: tzdata
 Architecture: all
 Multi-Arch: foreign
-Depends: debconf | debconf-2.0, ${misc:Depends}
-Provides: tzdata-bookworm
+Depends: ${misc:Depends}, debconf | debconf-2.0
+Provides: tzdata-bullseye
 Description: time zone and daylight-saving time data
  This package contains data required for the implementation of
  standard local time for many representative locations around the

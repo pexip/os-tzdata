@@ -1,0 +1,22 @@
+commit af242d11b62584808a66851b8707148bf1ee8d0a
+Author: Paul Eggert <eggert@cs.ucla.edu>
+Date:   Thu Mar 2 02:01:27 2023 -0800
+
+    Max → max
+    
+    * africa (Egypt): Use lower-case ‘max’ for consistency.
+    (Thanks to Peter Krefting.)
+
+diff --git a/africa b/africa
+index 24871f3d..985705de 100644
+--- a/africa
++++ b/africa
+@@ -338,7 +338,7 @@ Rule	Egypt	2014	only	-	Jun	26	24:00	0	-
+ Rule	Egypt	2014	only	-	Jul	31	24:00	1:00	S
+ Rule	Egypt	2014	only	-	Sep	lastThu	24:00	0	-
+ Rule	Egypt	2023	max	-	Apr	lastFri	 0:00	1:00	S
+-Rule	Egypt	2023	Max	-	Oct	lastThu	24:00	0	-
++Rule	Egypt	2023	max	-	Oct	lastThu	24:00	0	-
+ 
+ # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
+ Zone	Africa/Cairo	2:05:09 -	LMT	1900 Oct
