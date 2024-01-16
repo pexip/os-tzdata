@@ -1,3 +1,21 @@
+tzdata (2021a-1+deb11u11pexip1) pexip; urgency=medium
+
+  * New upstream release.
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Tue, 16 Jan 2024 16:24:09 +0000
+
+tzdata (2021a-1+deb11u11) bullseye; urgency=medium
+
+  * Cherry-pick patches from upstream:
+    - 25-no-leap-second-on-2023-12-31.patch: Update leap-seconds.list from
+      upstream. The new expiration date is 28 June 2024.  Closes: #1057185,
+      #1057186.
+    - 26-egypt-dst-fix.patch: Fix a typo in the Egypt change introduced in
+      tzdata 2021a-1+deb11u9.  Closes: #1036104.
+  * debian/clean: Remove leapseconds during clean target.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Fri, 01 Dec 2023 22:51:38 +0100
+
 tzdata (2021a-1+deb11u10pexip1) pexip; urgency=medium
 
   * New upstream release.

@@ -22,3 +22,5 @@
 22-palestine-dst4.patch
 23-lebanon-dst.patch
 24-lebanon-dst2.patch
+25-no-leap-second-on-2023-12-31.patch
+26-egypt-dst-fix.patch
