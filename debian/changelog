@@ -1,3 +1,22 @@
+tzdata (2024a-0+deb12u1) bookworm; urgency=medium
+
+  * New upstream version 2024a
+    - Kazakhstan unifies on UTC+5 beginning 2024-03-01.
+    - Palestine springs forward a week later after Ramadan.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 03 Feb 2024 19:56:08 +0100
+
+tzdata (2023d-0+deb12u1) bookworm; urgency=medium
+
+  * New upstream version:
+    - Ittoqqortoormiit, Greenland changes time zones on 2024-03-31.
+    - Vostok, Antarctica changed time zones on 2023-12-18.
+    - Casey, Antarctica changed time zones five times since 2020.
+    - Code and data fixes for Palestine timestamps starting in 2072.
+  * Drop leap-seconds.list patch (taken from upstream)
+
+ -- Aurelien Jarno <aurel32@debian.org>  Thu, 25 Jan 2024 22:09:03 +0100
+
 tzdata (2023c-5+deb12u1) bookworm; urgency=medium
 
   * Update leap-seconds.list from upstream
