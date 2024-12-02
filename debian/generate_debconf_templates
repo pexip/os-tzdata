@@ -97,6 +97,7 @@ INCLUDE_SYMLINKS = {
     "America/Virgin",
     "America/Yellowknife",
     "Arctic/Longyearbyen",
+    "Asia/Choibalsan",
     "Asia/Chongqing",
     "Asia/Harbin",
     "Asia/Istanbul",
