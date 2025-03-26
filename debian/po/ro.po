@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tzdata 2022g-7\n"
 "Report-Msgid-Bugs-To: tzdata@packages.debian.org\n"
-"POT-Creation-Date: 2023-02-06 11:44+0100\n"
+"POT-Creation-Date: 2025-03-25 20:50+0100\n"
 "PO-Revision-Date: 2023-03-28 13:33+0200\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <debian-l10n-romanian@lists.debian.org>\n"
@@ -874,6 +874,13 @@ msgstr "Coral Harbour"
 #: ../tzdata.templates:3001
 msgid "Costa_Rica"
 msgstr "Costa Rica"
+
+#. Type: select
+#. Choices
+#. Translators: do not translate underscores. You can use spaces instead.
+#: ../tzdata.templates:3001
+msgid "Coyhaique"
+msgstr ""
 
 #. Type: select
 #. Choices

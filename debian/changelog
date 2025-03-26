@@ -1,3 +1,13 @@
+tzdata (2025b-0+deb12u1) bookworm; urgency=medium
+
+  * New upstream version 2025b:
+    - New America/Coyhaique zone for Aysén Region in Chile, which moves
+      from -04/-03 to -03. It will not change its clocks on 2025-04-05.
+    - Improve historical data for Iran
+  * Add America/Coyhaique to debconf templates
+
+ -- Aurelien Jarno <aurel32@debian.org>  Wed, 26 Mar 2025 21:52:28 +0100
+
 tzdata (2025a-0+deb12u1) bookworm; urgency=medium
 
   * New upstream version 2025a
