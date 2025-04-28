@@ -1,0 +1,68 @@
+#!/usr/bin/python3
+
+# Author: Benjamin Drung <bdrung@ubuntu.com>
+
+"""Test C++ chrono module."""
+
+import pathlib
+import subprocess
+import sys
+import tempfile
+import textwrap
+import unittest
+import zoneinfo
+
+
+def is_symlink_zone(timezone: str) -> bool:
+    """Check if the given timezone is an alternative name i. e. a symlink."""
+    zone = pathlib.Path("/usr/share/zoneinfo") / timezone
+    return zone.is_symlink()
+
+
+class TestChrono(unittest.TestCase):
+    """Test C++ chrono module."""
+
+    def test_get_tzdb_zones(self) -> None:
+        """Test C++ std::chrono::get_tzdb().zones."""
+        with tempfile.TemporaryDirectory() as tempdir:
+            code_file = pathlib.Path(tempdir) / "get_tzdb.cxx"
+            code_file.write_text(
+                textwrap.dedent(
+                    """
+                    #include <chrono>
+                    #include <iostream>
+
+                    int main() {
+                        for (const auto & time_zone : std::chrono::get_tzdb().zones) {
+                            std::cout << time_zone.name() << std::endl;
+                        }
+                    }
+                    """
+                )
+            )
+            command = pathlib.Path(tempdir) / "get_tzdb"
+            subprocess.run(
+                ["g++", "-std=c++20", "-o", str(command), str(code_file)], check=True
+            )
+            output = subprocess.run(
+                [str(command)], capture_output=True, check=True, text=True
+            )
+            timezones = set(output.stdout.strip().split("\n"))
+            self.assertIn("Europe/Berlin", timezones)
+            expected_timezones = {
+                zone
+                for zone in zoneinfo.available_timezones()
+                if not is_symlink_zone(zone)
+            }
+            self.assertEqual(timezones, expected_timezones)
+
+
+def main() -> None:
+    """Run unit tests in verbose mode."""
+    argv = sys.argv.copy()
+    argv.insert(1, "-v")
+    unittest.main(argv=argv)
+
+
+if __name__ == "__main__":
+    main()

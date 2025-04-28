@@ -117,12 +117,12 @@ class TestDebconf(unittest.TestCase):
         self.assertEqual(self._get_timezone(), "Etc/UTC")
         self.assertEqual(self._get_selection(), "Etc/UTC")
 
-    def test_reconfigure_creates_etc_timezone(self) -> None:
-        """Test dpkg-reconfigure does create /etc/timezone."""
+    def test_reconfigure_does_not_create_etc_timezone(self) -> None:
+        """Test dpkg-reconfigure does not create /etc/timezone."""
         self._set_timezone("America/New_York")
         self._call_dpkg_reconfigure()
         self.assertEqual(self._get_timezone(), "America/New_York")
-        self.assertTrue(self.etc_timezone.exists())
+        self.assertFalse(self.etc_timezone.exists())
         self.assertEqual(self._get_selection(), "America/New_York")
 
     def test_reconfigure_updates_etc_timezone(self) -> None:

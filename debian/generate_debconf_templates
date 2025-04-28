@@ -10,7 +10,9 @@ import os
 import pathlib
 import sys
 
-import natsort
+# Drop script directory to workaround https://launchpad.net/bugs/2018666
+sys.path.pop(0)
+import natsort  # noqa: E402, pylint: disable=wrong-import-position
 
 LOG_FORMAT = "%(name)s %(levelname)s: %(message)s"
 __script_name__ = os.path.basename(sys.argv[0]) if __name__ == "__main__" else __name__
@@ -26,7 +28,6 @@ TEMPLATES_AREAS = [
     "Europe",
     "Indian",
     "Pacific",
-    "US",
     "Etc",
 ]
 
@@ -38,6 +39,7 @@ EXCLUDE_SYMLINKS = {
     "America/Catamarca",
     "America/Cordoba",
     "America/Fort_Wayne",
+    "America/Godthab",
     "America/Indianapolis",
     "America/Jujuy",
     "America/Knox_IN",
@@ -47,6 +49,7 @@ EXCLUDE_SYMLINKS = {
     "Antarctica/South_Pole",
     "Asia/Ashkhabad",
     "Asia/Calcutta",
+    "Asia/Choibalsan",
     "Asia/Chungking",
     "Asia/Dacca",
     "Asia/Katmandu",
@@ -72,7 +75,18 @@ EXCLUDE_SYMLINKS = {
     "Pacific/Enderbury",
     "Pacific/Ponape",
     "Pacific/Truk",
+    "US/Alaska",
+    "US/Aleutian",
+    "US/Arizona",
+    "US/Central",
     "US/East-Indiana",
+    "US/Eastern",
+    "US/Hawaii",
+    "US/Indiana-Starke",
+    "US/Michigan",
+    "US/Mountain",
+    "US/Pacific",
+    "US/Samoa",
 }
 
 # List of symlinks that should be selectable
@@ -81,7 +95,6 @@ INCLUDE_SYMLINKS = {
     "America/Atka",
     "America/Coral_Harbour",
     "America/Ensenada",
-    "America/Godthab",
     "America/Kralendijk",
     "America/Lower_Princes",
     "America/Marigot",
@@ -97,7 +110,6 @@ INCLUDE_SYMLINKS = {
     "America/Virgin",
     "America/Yellowknife",
     "Arctic/Longyearbyen",
-    "Asia/Choibalsan",
     "Asia/Chongqing",
     "Asia/Harbin",
     "Asia/Istanbul",
@@ -119,17 +131,6 @@ INCLUDE_SYMLINKS = {
     "Pacific/Johnston",
     "Pacific/Samoa",
     "Pacific/Yap",
-    "US/Alaska",
-    "US/Aleutian",
-    "US/Arizona",
-    "US/Central",
-    "US/Eastern",
-    "US/Hawaii",
-    "US/Indiana-Starke",
-    "US/Michigan",
-    "US/Mountain",
-    "US/Pacific",
-    "US/Samoa",
     "Etc/GMT+0",
     "Etc/GMT-0",
     "Etc/GMT0",
@@ -178,11 +179,14 @@ def generate_debconf_templates_area(zoneinfo_dir: pathlib.Path, area: str) -> st
         )
     else:
         choices_key = "__Choices"
-        description = "Please select the city or region corresponding to your time zone."
+        description = (
+            "Please select the city or region corresponding to your time zone."
+        )
     return f"""\
 Template: tzdata/Zones/{area}
 Type: select
-# Translators: do not translate underscores. You can use spaces instead.
+# Translators: This is a city name.
+# Do not translate underscores. You can use spaces instead.
 #flag:partial
 {choices_key}: {", ".join(choices)}
 _Description: Time zone:
@@ -198,8 +202,8 @@ def generate_debconf_templates(zoneinfo_dir: pathlib.Path) -> str:
 Template: tzdata/Areas
 Type: select
 # Note to translators:
-# - "Etc" will present users with a list
-#    of "GMT+xx" or "GMT-xx" timezones
+# - This is a continent or ocean (except for "Etc")
+# - "Etc" will present users with a list of "GMT+xx" or "GMT-xx" timezones
 __Choices: {", ".join(TEMPLATES_AREAS)}
 _Description: Geographic area:
  Please select the geographic area in which you live. Subsequent

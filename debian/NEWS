@@ -1,0 +1,35 @@
+tzdata (2024b-6) unstable; urgency=medium
+
+   Previously, the tzdata package in Debian used the /etc/timezone file to
+   configure the system's timezone. This method is not supported by systemd
+   and certain desktop environments, which instead only change the
+   /etc/localtime symlink to point to a file in /usr/share/zoneinfo.
+
+   For this reason, starting with version 2024b-5, the tzdata package no
+   longer automatically creates the /etc/timezone file, but still updates it
+   if it exists. In a future release, the /etc/timezone file will be
+   automatically removed and support for it in the maintainer scripts will be
+   completely dropped. The debian-installer from Trixie also no longer creates
+   this file. It should be fine to just remove this file, but it is also fine
+   waiting for the automatic removal in a future release.
+
+   The system's timezone configuration can still be done interactively using
+   Debconf by reconfiguring the tzdata package, using 'dpkg-reconfigure
+   tzdata'. The way to programmatically read or configure the system's
+   timezone is described in /usr/share/doc/tzdata/README.Debian.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 13 Jan 2025 23:25:11 +0100
+
+tzdata (2023d-1) unstable; urgency=medium
+
+    From 2023c-8 on the tzdata package ships only timezones that follow the
+    current rules of geographical region (continent or ocean) and city name.
+    All legacy timezone symlinks (old or merged timezones mentioned in the
+    upstream backward file) were moved to tzdata-legacy. This includes the
+    US/* timezones.
+
+    Please install tzdata-legacy in case you need the legacy timezones or to
+    restore the previous behavior. This might be needed in case the system
+    provides timezone-aware data over the network (e. g. SQL databases).
+
+ -- Benjamin Drung <bdrung@debian.org>  Tue, 02 Jan 2024 14:17:33 +0100

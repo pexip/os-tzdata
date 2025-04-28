@@ -8,25 +8,19 @@ TZGEN := $(CURDIR)/tzgen
 	dh $@
 
 override_dh_auto_build-indep:
-	# Generate a tzdata.zi file
-	$(MAKE) AWK=gawk BACKWARD="backward" PACKRATDATA=backzone PACKRATLIST=zone.tab VERSION_DEPS= tzdata.zi
-
-	# Generate the leapseconds file
-	$(MAKE) AWK=gawk PACKRATDATA=backzone PACKRATLIST=zone.tab leapseconds
+	# Generate a tzdata.zi and leapseconds file
+	$(MAKE) AWK=gawk BACKWARD="backward" PACKRATDATA=backzone PACKRATLIST=zone.tab VERSION_DEPS= tzdata.zi leapseconds
 
 	# Build the timezone data
-	/usr/sbin/zic -d $(TZGEN) -L /dev/null tzdata.zi ; \
-	mkdir "$(TZGEN)/posix"; \
-	find "$(TZGEN)" -mindepth 1 -maxdepth 1 ! -name posix -printf "%P\n" | while read -r tz; do \
-		ln -sr "$(TZGEN)/$$tz" "$(TZGEN)/posix/$$tz"; \
-	done; \
-	/usr/sbin/zic -d $(TZGEN)/right -L leapseconds tzdata.zi ; \
+	/usr/sbin/zic -b fat -d $(TZGEN) -L /dev/null tzdata.zi
+	/usr/sbin/zic -b fat -d $(TZGEN)/right -L leapseconds tzdata.zi
 
 	# Replace hardlinks by symlinks
 	grep '^L ' $(CURDIR)/tzdata.zi | while read L target name ; do \
-		ln -srf $(TZGEN)/$$target $(TZGEN)/$$name ; \
-		ln -srf $(TZGEN)/posix/$$target $(TZGEN)/posix/$$name ; \
-		ln -srf $(TZGEN)/right/$$target $(TZGEN)/right/$$name ; \
+		absolute_name="$(TZGEN)/$$name"; \
+		relative_target=$$(realpath -m -s --relative-to="$${absolute_name%/*}" "$(TZGEN)/$$target"); \
+		ln -sf "$$relative_target" "$(TZGEN)/$$name" ; \
+		ln -sf "$$relative_target" "$(TZGEN)/right/$$name" ; \
 	done
 
 	# Generate a posixrules file
@@ -42,7 +36,8 @@ override_dh_auto_test:
 	debian/check_translations debian/po/*.po
 
 override_dh_auto_install:
-	# Nothing to do.
+	mkdir -p debian/tmp/usr/share/zoneinfo
+	cp -r tzgen/* debian/tmp/usr/share/zoneinfo
 
 override_dh_auto_clean:
 	-rm -rf $(TZGEN)

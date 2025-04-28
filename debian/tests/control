@@ -1,12 +1,26 @@
+Tests: chrono
+Depends: g++, python3 (>= 3.9), tzdata
+Restrictions: allow-stderr
+
 Tests: debconf
 Depends: python3, tzdata
 Restrictions: allow-stderr needs-root
 
 Tests: python
-Depends: python3 (>= 3.9), tzdata
+Depends: python3 (>= 3.9), tzdata, tzdata-legacy
 Restrictions: allow-stderr
 
+Test-command: NO_LEGACY_TIMEZONES=1 debian/tests/python
+Depends: python3 (>= 3.9), tzdata
+Restrictions: allow-stderr
+Features: test-name=python_no_legacy
+
 Test-command: debian/test_timezone_conversions -d /var/lib/dpkg/info/
-Depends: python3, python3-debian, tzdata
+Depends: python3, python3-debian, tzdata, tzdata-legacy
 Restrictions: allow-stderr superficial
 Features: test-name=test_timezone_conversions
+
+Test-command: debian/test_timezone_conversions -d /var/lib/dpkg/info/ --all-selectable
+Depends: python3, python3-debian, tzdata
+Restrictions: allow-stderr superficial
+Features: test-name=test_timezone_conversions_no_legacy

@@ -5,6 +5,7 @@
 """Check convert_timezone from tzdata.config for consistency."""
 
 import argparse
+import functools
 import logging
 import pathlib
 import re
@@ -18,18 +19,22 @@ import debian.deb822
 LOG_FORMAT = "%(levelname)s: %(message)s"
 # Special timezones that should not be selectable in debconf
 SPECIAL = {"Factory", "localtime"}
+# Not selectable timezones that are not mentioned in the backward file.
+# See also https://launchpad.net/bugs/2030684
+EXCLUDE_UNSELECTABLE = {"GMT", "UTC"}
 
 
 class ConvertTimezone:
     """Wrap convert_timezone from tzdata.config."""
 
-    def __init__(self, tzdata_config: pathlib.Path):
+    def __init__(self, tzdata_config: pathlib.Path) -> None:
         self.tzdata_config = tzdata_config
         content = tzdata_config.read_text(encoding="utf-8")
         match = re.search(r"convert_timezone\(\).*\n}", content, flags=re.DOTALL)
         assert match, f"convert_timezone function not found in {tzdata_config}"
         self.convert_timezone = match.group(0)
 
+    @functools.lru_cache(maxsize=8192)
     def __call__(self, timezone: str) -> str:
         shell_script = f"{self.convert_timezone}\nconvert_timezone '{timezone}'\n"
         shell = subprocess.run(
@@ -40,17 +45,18 @@ class ConvertTimezone:
         )
         return shell.stdout.strip()
 
-    def filter_converted_timezones(self, timezones: set[str]) -> set[str]:
-        """Return set of timezones that will be converted by convert_timezone."""
-        converted = set()
+    def filter_converted_timezones(self, timezones: set[str]) -> dict[str, str]:
+        """Return dict of timezones that will be converted by convert_timezone."""
+        converted = {}
         for timezone in timezones:
-            if self(timezone) != timezone:
-                converted.add(timezone)
+            conversion = self(timezone)
+            if conversion != timezone:
+                converted[timezone] = conversion
         return converted
 
     def filter_unconverted_timezones(self, timezones: set[str]) -> set[str]:
         """Return set of timezones that will not be converted by convert_timezone."""
-        return timezones - self.filter_converted_timezones(timezones)
+        return timezones - set(self.filter_converted_timezones(timezones))
 
     def get_targets(self) -> set[str]:
         """Return set of conversion targets."""
@@ -98,6 +104,27 @@ def get_debconf_choices(template_filename: pathlib.Path) -> set[str]:
     return debconf_choices
 
 
+def _check_symlink(source: str, target: str) -> bool:
+    """Check if the given timezone source symlinks to the given target."""
+    for tzpath in zoneinfo.TZPATH:
+        timezone = pathlib.Path(tzpath) / source
+        if timezone.exists():
+            expected_target = pathlib.Path(tzpath) / target
+            return timezone.resolve() == expected_target.resolve()
+    return True
+
+
+def check_symlinks(timezones: dict[str, str]) -> set[str]:
+    """Check timezone replacements are identical to the symlinks on disk."""
+    mismatch = set()
+    for source, target in timezones.items():
+        if source.startswith("right/"):
+            continue
+        if not _check_symlink(source, target):
+            mismatch.add(source)
+    return mismatch
+
+
 def existing_dir_path(string: str) -> pathlib.Path:
     """Convert string to existing dir path or raise ArgumentTypeError."""
     path = pathlib.Path(string)
@@ -123,6 +150,11 @@ def parse_args() -> argparse.Namespace:
         help="Path to debian directory containing tzdata.config"
         " and tzdata.templates (default: %(default)s)",
     )
+    parser.add_argument(
+        "--all-selectable",
+        action="store_true",
+        help="Require all available timezones to be selectable in debconf",
+    )
     return parser.parse_args()
 
 
@@ -138,7 +170,7 @@ def main() -> int:
     conversion_targets = convert_timezone.get_targets()
     failures = 0
 
-    converted = convert_timezone.filter_converted_timezones(selectable)
+    converted = set(convert_timezone.filter_converted_timezones(selectable))
     if converted:
         logger.error(
             "Following %i timezones can be selected, but will be converted:\n%s",
@@ -147,8 +179,16 @@ def main() -> int:
         )
         failures += 1
 
-    unselectable = available - selectable
-    missing = convert_timezone.filter_unconverted_timezones(unselectable) - SPECIAL
+    unselectable = available - selectable - SPECIAL - EXCLUDE_UNSELECTABLE
+    if args.all_selectable and unselectable:
+        logger.error(
+            "Following %i timezones cannot be selected, but are available:\n%s",
+            len(unselectable),
+            "\n".join(sorted(unselectable)),
+        )
+        failures += 1
+
+    missing = convert_timezone.filter_unconverted_timezones(unselectable)
     if missing:
         logger.error(
             "Following %i timezones cannot be selected, but are not converted:\n%s",
@@ -169,9 +209,20 @@ def main() -> int:
     targets = conversion_targets - selectable
     if targets:
         logger.error(
-            "Following %i timezones are conversion targets, but are not selectable:\n%s",
+            "Following %i timezones are conversion targets,"
+            " but are not selectable:\n%s",
             len(targets),
             "\n".join(sorted(targets)),
+        )
+        failures += 1
+
+    mismatch = check_symlinks(convert_timezone.filter_converted_timezones(available))
+    if mismatch:
+        logger.error(
+            "Following %i timezones are converted,"
+            " but they do not match their symlink targets:\n%s",
+            len(mismatch),
+            "\n".join(sorted(mismatch)),
         )
         failures += 1
 

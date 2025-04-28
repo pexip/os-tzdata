@@ -33,8 +33,10 @@ if [ "$1" = configure ]; then
 			mv -f "$DPKG_ROOT/etc/localtime.dpkg-new" "$DPKG_ROOT/etc/localtime"
 		which restorecon >/dev/null 2>&1 && restorecon "$DPKG_ROOT/etc/localtime"
 	fi
-	echo "$TIMEZONE" > "$DPKG_ROOT/etc/timezone"
-	which restorecon >/dev/null 2>&1 && restorecon "$DPKG_ROOT/etc/timezone"
+	if test -f "$DPKG_ROOT/etc/timezone"; then
+		echo "$TIMEZONE" > "$DPKG_ROOT/etc/timezone"
+		which restorecon >/dev/null 2>&1 && restorecon "$DPKG_ROOT/etc/timezone"
+	fi
 
 	echo
 	echo "Current default time zone: '$TIMEZONE'"
