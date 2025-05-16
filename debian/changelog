@@ -1,3 +1,15 @@
+tzdata (2025b-3) unstable; urgency=medium
+
+  [ Aurelien Jarno ]
+  * Update Dutch debconf translation.
+    Thanks to Frans Spiesschaert <Frans.Spiesschaert@yucom.be>
+    (Closes: #1103355)
+
+  [ Benjamin Drung ]
+  * d/tzdata.config: quote variables to prevent word splitting
+
+ -- Benjamin Drung <bdrung@debian.org>  Fri, 02 May 2025 11:00:46 +0200
+
 tzdata (2025b-2+pexip25u1) pexip-trixie; urgency=medium
 
   * Initial trixie build
