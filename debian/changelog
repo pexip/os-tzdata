@@ -1,3 +1,13 @@
+tzdata (2025b-4) unstable; urgency=medium
+
+  [ Aurelien Jarno ]
+  * Update Portuguese debconf translation.
+    Thanks to Américo Monteiro <a_monteiro@gmx.com> (Closes: #1107419)
+  * Update Italian debconf translation.
+    Thanks to Ceppo <ceppo@oziosi.org> (Closes: #1108251)
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 28 Jun 2025 12:23:31 +0200
+
 tzdata (2025b-3) unstable; urgency=medium
 
   [ Aurelien Jarno ]
