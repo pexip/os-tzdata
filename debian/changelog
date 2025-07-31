@@ -1,3 +1,9 @@
+tzdata (2025b-4+pexip25u1) pexip-trixie; urgency=medium
+
+  * New upstream release
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Thu, 31 Jul 2025 15:05:55 +0100
+
 tzdata (2025b-4) unstable; urgency=medium
 
   [ Aurelien Jarno ]
