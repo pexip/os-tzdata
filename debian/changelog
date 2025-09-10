@@ -1,3 +1,15 @@
+tzdata (2025b-0+deb12u2+pexip24u1) pexip; urgency=medium
+
+  * New upstream release
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Sep, 10 Sep 2025 14:46:30 +0100
+
+tzdata (2025b-0+deb12u2) bookworm; urgency=medium
+
+  * Backport leap second update from upstream
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sun, 24 Aug 2025 21:55:23 +0200
+
 tzdata (2025b-0+deb12u1+pexip24u1) pexip; urgency=medium
 
   * New upstream release
