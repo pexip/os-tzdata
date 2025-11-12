@@ -1,14 +1,20 @@
-tzdata (2025b-4+pexip25u1) pexip-trixie; urgency=medium
+tzdata (2025b-4+deb13u1+pexip25u1) pexip-trixie; urgency=medium
 
-  * New upstream release
+  * New upstream release.
 
- -- Mark Hymers <mark.hymers@pexip.com>  Wed, 05 Nov 2025 11:03:26 +0000
+ -- Mark Hymers <mark.hymers@pexip.com>  Wed, 12 Nov 2025 09:54:30 +0000
 
 tzdata (2025b-4+deb13u1) trixie; urgency=medium
 
   * Backport leap second update from upstream
 
  -- Aurelien Jarno <aurel32@debian.org>  Sun, 24 Aug 2025 22:12:10 +0200
+
+tzdata (2025b-4+pexip25u1) pexip-trixie; urgency=medium
+
+  * New upstream release
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Wed, 05 Nov 2025 11:03:26 +0000
 
 tzdata (2025b-4) unstable; urgency=medium
 
