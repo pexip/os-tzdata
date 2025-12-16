@@ -1,3 +1,9 @@
+tzdata (2025b-4+deb13u1+pexip25u3) pexip-trixie; urgency=medium
+
+  * Rebuild to move tzdata-legacy to main.
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Tue, 16 Dec 2025 17:31:09 +0000
+
 tzdata (2025b-4+deb13u1+pexip25u2) pexip-trixie; urgency=medium
 
   * Trixie build for product distribution
