@@ -1,3 +1,13 @@
+tzdata (2026a-0+deb13u1) trixie; urgency=medium
+
+  * New upstream version 2026a:
+    - No leap second on 2026-06-30
+    - Moldova has used EU transition times since 2022
+  * Drop No-leap-second-on-2025-12-31.patch (merged upstream)
+  * gbp.conf: change branch to trixie
+
+ -- Aurelien Jarno <aurel32@debian.org>  Wed, 04 Mar 2026 00:06:13 +0100
+
 tzdata (2025b-4+deb13u1) trixie; urgency=medium
 
   * Backport leap second update from upstream
