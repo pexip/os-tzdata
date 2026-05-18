@@ -1,3 +1,11 @@
+tzdata (2026b-0+deb13u1) trixie; urgency=medium
+
+  * New upstream version 2026b:
+    - British Columbia moved to permanent -07 on 2026-03-09, so it will not
+      fall back from -07 to -08 on 2026-11-01.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 28 Apr 2026 20:45:23 +0200
+
 tzdata (2026a-0+deb13u1+pexip25u1) pexip-trixie; urgency=medium
 
   * New upstream release.
