@@ -1,3 +1,13 @@
+tzdata (2026c-0+deb13u1) trixie; urgency=medium
+
+  * New upstream version 2026c:
+    - Alberta moved to permanent -06 on 2026-06-18, so it will not fall back
+       from -06 to -07 on 2026-11-01.
+    - Morocco moves to permanent +00 on 2026-09-20.
+    - No leap second on 2026-12-31.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sun, 16 Aug 2026 21:05:24 +0200
+
 tzdata (2026b-0+deb13u1) trixie; urgency=medium
 
   * New upstream version 2026b:
